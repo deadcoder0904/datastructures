@@ -12,6 +12,7 @@
   <script src="https://unpkg.com/docute-evanyou@0.4.0/dist/evanyou.min.js"></script>
   <script src="https://unpkg.com/docute@3/dist/docute.js"></script>
   <script src="https://unpkg.com/docute/plugins/docsearch.js"></script>
+  <script src="https://unpkg.com/docute/plugins/disqus.js"></script>
   <script>
     docute.init({
         landing: 'landing.html',
@@ -27,8 +28,27 @@
               title: 'Additional Resources', path: '/resources'
             }
           ]
-        }
+        },
+         plugins: [
+         evanyou(),
+          disqus({
+            shortname: 'datastructures-1' // replace this with your own shortname
+          })
+        ]
     })
   </script>
+
+  <!-- Google Analytics -->
+  <script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-86681338-4', 'auto');
+  ga('send', 'pageview');
+  docute.router.afterEach(function (to) {
+    ga('set', 'page', to.fullPath);
+    ga('send', 'pageview');
+  });
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  <!-- End Google Analytics -->
 </body>
 </html>

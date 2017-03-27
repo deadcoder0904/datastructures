@@ -1,10 +1,12 @@
 <h1>Data Structures</h1>
 
-<h2>Learning from GeeksforGeeks & rewriting all in one place.</h2>
+<blockquote>One of the best ways to learn anything is to teach yourself.</blockquote>
 
 <ul class="features">
   <li>Made for personal use 👻</li>
   <li>All in one place 💯</li>
+  <li>Learning from <a href="http://www.geeksforgeeks.org/data-structures/">GeeksforGeeks</a> 🙌</li>
+  <li>Very cute interface 🤔</li>
 </ul>
 
 <div class="landing-buttons">
@@ -13,7 +15,7 @@
   </a>
 
   <a class="landing-button" router-link="/home">
-    Docs
+    View
   </a>
 </div>
 
@@ -23,12 +25,6 @@
     margin-top: -50px;
     font-weight: normal;
     font-size: 40px;
-    letter-spacing: 1px;
-  }
-  h2 {
-    margin-top: 20px;
-    color: #999;
-    font-weight: normal;
     letter-spacing: 1px;
   }
   .landing {
@@ -70,5 +66,30 @@
     color: #42b983;
     text-decoration: none;
   }
+  blockquote {
+    position: relative;
+    marign: 0;
+    padding: 30px 120px;
+    text-align: center;
+    font-size: 30px;
+    color: #999;
+}
+blockquote:before, blockquote:after {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    font-size: 120px;
+    line-height: 1;
+}
+blockquote:before {
+    top: 0;
+    left: 0;
+    content: "\201C";
+}
+blockquote:after {
+    top: 0;
+    right: 0;
+    content: "\201D";
+}
 </style>
 
