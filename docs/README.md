@@ -129,6 +129,46 @@ void insertAtEnd(node **head, dataType data) {
 
 ```cpp
 
+void deleteNode(node **head, dataType key) {
+	node *temp = *head, *prev;
+	if(temp != NULL && temp->data == key) {
+		cout<<"List is empty"<<endl;
+		*head = temp->next;
+		free(temp);
+		return;
+	}
 
+	while(temp != NULL && temp->data != key) {
+		prev = temp;
+		temp = temp->next;
+	}
+
+	if(temp == NULL) {
+		cout<<"Key "<<key<<" not found"<<endl;
+		return;
+	}
+	
+	prev->next = temp->next;
+	free(temp);
+}
 
 ```
+
+#### Example
+
+```cpp
+
+	node *head = NULL;
+	insertAtStart(&head, 'C');
+	insertAtStart(&head, 'B');
+	insertAtStart(&head, 'A');
+	deleteNode(&head, 'B');
+	printList(head);
+
+```
+
+#### Output
+
+<p class="tip">A -> C -> NULL</p>
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/delete-a-node.cpp)
