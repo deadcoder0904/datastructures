@@ -214,3 +214,59 @@ A -> D -> NULL
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/delete-a-node.cpp)
+
+### Length
+
+#### 1. Iterative
+
+```cpp
+
+int iterativeLength(node *head) {
+	int length = 0;
+	node *temp = head;
+	while(temp != NULL) {
+		temp = temp->next;
+		length++;
+	}
+	return length;
+}
+
+```
+
+#### 2. Recursive
+
+```cpp
+
+int recursiveLength(node *head) {
+	int length = 0;
+	if(head == NULL)
+		return 0;
+	return recursiveLength(head->next) + 1;	
+}
+
+```
+
+#### Example
+
+```cpp
+
+node *head = NULL;
+insertAtEnd(&head, 'B');
+insertAtFirst(&head, 'A');
+insertAfter(head->next, 'C');
+insertAtEnd(&head, 'D');
+insertAtEnd(&head, 'E');
+cout<<"Length of Linked List using Iterative Method : "<<iterativeLength(head)<<endl;
+cout<<"Length of Linked List using Recursive Method : "<<recursiveLength(head)<<endl;
+
+```
+
+#### Output
+
+```cpp
+Length of Linked List using Iterative Method : 5
+Length of Linked List using Recursive Method : 5
+
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/insert-a-node.cpp)
