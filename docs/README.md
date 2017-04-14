@@ -123,13 +123,13 @@ printList(head);
 
 ### Deletion
 
-#### Deleting a Node
+#### 1. Deleting a given key
 
-![linked-list-deleting-a-node](./assets/img/linked-list-deleting-a-node.png)
+![linked-list-deleting-a-given-key](./assets/img/linked-list-deleting-a-node.png)
 
 ```cpp
 
-void deleteNode(node **head, dataType key) {
+void deleteNodeWithSpecifiedKey(node **head, dataType key) {
 	node *temp = *head, *prev;
 	if(temp != NULL && temp->data == key) {
 		*head = temp->next;
@@ -153,6 +153,36 @@ void deleteNode(node **head, dataType key) {
 
 ```
 
+#### 2. Deleting a key at given position
+
+![linked-list-deleting-a-key-at-given-position](./assets/img/linked-list-deleting-at-given-position.png)
+
+```cpp
+
+void deleteNodeWithSpecifiedPostion(node **head,int position) {
+	node *temp = *head;
+	
+	if(temp == NULL) 
+		return;
+	
+	if(position == 0) {
+		*head = temp->next;
+		free(temp);
+		return;
+	}
+
+	for(int i = 0; temp != NULL && i < position-1; i++) 
+		temp = temp->next;
+	
+	if(temp == NULL || temp->next == NULL)
+		return;
+
+	free(temp->next);
+	temp->next = temp->next->next;
+}
+
+```
+
 #### Example
 
 ```cpp
@@ -161,13 +191,26 @@ node *head = NULL;
 insertAtStart(&head, 'C');
 insertAtStart(&head, 'B');
 insertAtStart(&head, 'A');
-deleteNode(&head, 'B');
+insertAtStart(&head, 'D');
+insertAtStart(&head, 'E');
+insertAtStart(&head, 'F');
+cout<<"Deleting node with key 'B' : "<<endl;
+deleteNodeWithSpecifiedKey(&head, 'B');
+printList(head);
+cout<<"Deleting node at position 2 : "<<endl;
+deleteNodeWithSpecifiedPostion(&head,2);
 printList(head);
 
 ```
 
 #### Output
 
-<p class="tip">A -> C -> NULL</p>
+```cpp
+Deleting node with key 'B' : 
+F -> E -> D -> A -> C -> NULL
+Deleting node at position 2 : 
+F -> E -> A -> C -> NULL
+
+```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/delete-a-node.cpp)
