@@ -105,13 +105,13 @@ void insertAtEnd(node **head, dataType data) {
 
 ```cpp
 
-	node *head = NULL;
-	insertAtEnd(&head, 'B');
-	insertAtFirst(&head, 'A');
-	insertAfter(head->next, 'C');
-	insertAtEnd(&head, 'D');
-	insertAtEnd(&head, 'E');
-	printList(head);
+node *head = NULL;
+insertAtEnd(&head, 'B');
+insertAtFirst(&head, 'A');
+insertAfter(head->next, 'C');
+insertAtEnd(&head, 'D');
+insertAtEnd(&head, 'E');
+printList(head);
 
 ```
 
@@ -132,7 +132,6 @@ void insertAtEnd(node **head, dataType data) {
 void deleteNode(node **head, dataType key) {
 	node *temp = *head, *prev;
 	if(temp != NULL && temp->data == key) {
-		cout<<"List is empty"<<endl;
 		*head = temp->next;
 		free(temp);
 		return;
@@ -158,12 +157,12 @@ void deleteNode(node **head, dataType key) {
 
 ```cpp
 
-	node *head = NULL;
-	insertAtStart(&head, 'C');
-	insertAtStart(&head, 'B');
-	insertAtStart(&head, 'A');
-	deleteNode(&head, 'B');
-	printList(head);
+node *head = NULL;
+insertAtStart(&head, 'C');
+insertAtStart(&head, 'B');
+insertAtStart(&head, 'A');
+deleteNode(&head, 'B');
+printList(head);
 
 ```
 
