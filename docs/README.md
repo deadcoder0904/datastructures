@@ -250,11 +250,11 @@ int recursiveLength(node *head) {
 ```cpp
 
 node *head = NULL;
-insertAtEnd(&head, 'B');
-insertAtFirst(&head, 'A');
-insertAfter(head->next, 'C');
-insertAtEnd(&head, 'D');
-insertAtEnd(&head, 'E');
+insertAtStart(&head, 'E');
+insertAtStart(&head, 'D');
+insertAtStart(&head, 'C');
+insertAtStart(&head, 'B');
+insertAtStart(&head, 'A');
 cout<<"Length of Linked List using Iterative Method : "<<iterativeLength(head)<<endl;
 cout<<"Length of Linked List using Recursive Method : "<<recursiveLength(head)<<endl;
 
@@ -307,11 +307,11 @@ int recursiveSearch(node *head, dataType key) {
 ```cpp
 
 node *head = NULL;
-insertAtEnd(&head, 'B');
-insertAtFirst(&head, 'A');
-insertAfter(head->next, 'C');
-insertAtEnd(&head, 'D');
-insertAtEnd(&head, 'E');
+insertAtStart(&head, 'E');
+insertAtStart(&head, 'D');
+insertAtStart(&head, 'C');
+insertAtStart(&head, 'B');
+insertAtStart(&head, 'A');
 cout<<"Search key in a Linked List using Iterative Method : "<<iterativeSearch(head,'C')<<endl;
 cout<<"Search key in a Linked List using Recursive Method : "<<recursiveSearch(head,'Z')<<endl;
 
