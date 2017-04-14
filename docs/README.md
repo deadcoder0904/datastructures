@@ -238,7 +238,6 @@ int iterativeLength(node *head) {
 ```cpp
 
 int recursiveLength(node *head) {
-	int length = 0;
 	if(head == NULL)
 		return 0;
 	return recursiveLength(head->next) + 1;	
@@ -269,7 +268,7 @@ Length of Linked List using Recursive Method : 5
 
 ```
 
-#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/insert-a-node.cpp)
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/length-of-linked-list.cpp)
 
 ### Search
 
@@ -326,4 +325,4 @@ Search key in a Linked List using Recursive Method : 0
 
 ```
 
-#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/insert-a-node.cpp)
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/search-in-linked-list.cpp)
