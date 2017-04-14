@@ -270,3 +270,60 @@ Length of Linked List using Recursive Method : 5
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/insert-a-node.cpp)
+
+### Search
+
+#### 1. Iterative
+
+```cpp
+
+int iterativeSearch(node *head, dataType key) {
+	node *temp = head;
+	while(temp != NULL) {
+		if(temp->data == key)
+			return true;
+		temp = temp->next;
+	}
+	return false;
+}
+
+```
+
+#### 2. Recursive
+
+```cpp
+
+int recursiveSearch(node *head, dataType key) {
+	if(head == NULL)
+		return false;
+	if(head->data == key)
+		return true;
+	return recursiveSearch(head->next,key);
+}
+
+```
+
+#### Example
+
+```cpp
+
+node *head = NULL;
+insertAtEnd(&head, 'B');
+insertAtFirst(&head, 'A');
+insertAfter(head->next, 'C');
+insertAtEnd(&head, 'D');
+insertAtEnd(&head, 'E');
+cout<<"Search key in a Linked List using Iterative Method : "<<iterativeSearch(head,'C')<<endl;
+cout<<"Search key in a Linked List using Recursive Method : "<<recursiveSearch(head,'Z')<<endl;
+
+```
+
+#### Output
+
+```cpp
+Search key in a Linked List using Iterative Method : 1
+Search key in a Linked List using Recursive Method : 0
+
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/insert-a-node.cpp)
