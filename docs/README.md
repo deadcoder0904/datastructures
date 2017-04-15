@@ -326,3 +326,72 @@ Search key in a Linked List using Recursive Method : 0
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/search-in-linked-list.cpp)
+
+### Swap Nodes
+
+![linked-list-swap-nodes](./assets/img/linked-list-swap-nodes.png)
+
+```cpp
+
+void swapNodes(node **head, dataType x, dataType y) {
+	if(x == y) return;
+
+	node *prevX = NULL, *currentX = *head;
+	while(currentX != NULL && currentX->data != x) {
+		prevX = currentX;
+		currentX = currentX->next;
+	}
+
+	node *prevY = NULL, *currentY = *head;
+	while(currentY != NULL && currentY->data != y) {
+		prevY = currentY;
+		currentY = currentY->next;
+	}
+	
+	if(currentX == NULL || currentY == NULL) 
+		return;
+
+	if(prevX != NULL)
+		prevX->next = currentY;
+	else *head = currentY;
+
+	if(prevY != NULL)
+		prevY->next = currentX;
+	else *head = currentX;
+
+	node *temp = currentY->next;
+	currentY->next = currentX->next;
+	currentX->next = temp;
+}
+
+```
+
+#### Example
+
+```cpp
+
+node *head = NULL;
+insertAtStart(&head, 'E');
+insertAtStart(&head, 'D');
+insertAtStart(&head, 'C');
+insertAtStart(&head, 'B');
+insertAtStart(&head, 'A');
+cout<<"Before Swapping Nodes : "<<endl;
+printList(head);
+swapNodes(&head,'B','D');
+cout<<"After Swapping Nodes : "<<endl;
+printList(head);
+
+```
+
+#### Output
+
+```cpp
+Before Swapping Nodes : 
+A -> B -> C -> D -> E -> NULL
+After Swapping Nodes : 
+A -> D -> C -> B -> E -> NULL
+
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/swap-nodes-in-linked-list.cpp)
