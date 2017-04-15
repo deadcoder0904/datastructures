@@ -461,7 +461,8 @@ dataType getMiddleNode1(node *head) {
 		count++;
 		temp = temp->next;
 	}
-
+	if(temp == NULL)
+        return '0';
 	return temp->data;
 }
 ```
@@ -529,3 +530,55 @@ Get Middle Node 3 : C
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/print-middle-of-linked-list.cpp)
+
+### Get Nth Node from End
+
+```cpp
+dataType getNthNodeFromLast(node *head, int n) {
+	node *temp = head;
+	int count = 0;
+
+	while(temp != NULL) {
+		count++;
+		temp = temp->next;
+	}
+
+	int position = count - n;
+	count = 0;
+	temp = head;
+
+	while(count != position) {
+		count++;
+		temp = temp->next;
+	}
+
+	if(temp == NULL)
+		return '0';
+	return temp->data;
+}
+```
+
+#### Example
+
+```cpp
+
+node *head = NULL;
+insertAtStart(&head, 'E');
+insertAtStart(&head, 'D');
+insertAtStart(&head, 'C');
+insertAtStart(&head, 'B');
+insertAtStart(&head, 'A');
+printList(head);
+cout<<"Get 2nd Node From Last : "<<getNthNodeFromLast(head,1)<<endl;
+
+```
+
+#### Output
+
+```cpp
+A -> B -> C -> D -> E -> NULL
+Get 2nd Node From Last : D
+
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/get-nth-node-from-last.cpp)
