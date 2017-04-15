@@ -395,3 +395,46 @@ A -> D -> C -> B -> E -> NULL
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/swap-nodes-in-linked-list.cpp)
+
+### Get Nth Node
+
+```cpp
+dataType getNthNode(node *head, int n) {
+	node *temp = head;
+	int count = 0;
+
+	while(temp != NULL) {
+		if(count == n)
+			return temp->data;
+		count++;
+		temp = temp->next;
+	}
+
+	return '0';
+}
+```
+
+#### Example
+
+```cpp
+
+node *head = NULL;
+insertAtStart(&head, 'E');
+insertAtStart(&head, 'D');
+insertAtStart(&head, 'C');
+insertAtStart(&head, 'B');
+insertAtStart(&head, 'A');
+printList(head);
+cout<<"Get 2nd Node : "<<getNthNode(head,1)<<endl;
+
+```
+
+#### Output
+
+```cpp
+A -> B -> C -> D -> E -> NULL
+Get 2nd Node : B
+
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/get-nth-node.cpp)
