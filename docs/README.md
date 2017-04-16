@@ -17,11 +17,17 @@ typedef struct node {
 
 ```
 
-### Printing
+### Print
 
 ```cpp
 
 void printList(node *node) {
+	
+	if(node == NULL) {
+		cout<<"The linked list is empty"<<endl;
+		return;
+	}
+
 	while(node != NULL) {
 		cout<<(node->data)<<" -> ";
 		node = node->next;
@@ -445,24 +451,20 @@ Get 2nd Node : B
 
 ```cpp
 dataType getMiddleNode1(node *head) {
-	node *temp = head;
+	if(head == NULL)
+		return '0';
+
 	int count = 0;
-
-	while(temp != NULL) {
-		count++;
+	node *temp = head;
+	
+	for(count = 0; temp != NULL; count++) 
 		temp = temp->next;
-	}
-
-	int middle = count / 2 + 1;
+	
 	temp = head;
-	count = 0;
-
-	while(count != middle-1) {
-		count++;
+	
+	for(int i = 0; i < count/2; i++)
 		temp = temp->next;
-	}
-	if(temp == NULL)
-        return '0';
+	
 	return temp->data;
 }
 ```
@@ -489,17 +491,17 @@ dataType getMiddleNode2(node *head) {
 
 ```cpp
 dataType getMiddleNode3(node *head) {
+	if(head == NULL)
+		return '0';
+	
 	node *mid = head;
-	int count = 0;
-
-	while(head != NULL) {
+	
+	for(int count = 0; head != NULL; count++) {
 		if(count & 1)
 			mid = mid->next;
-		count++;
 		head = head->next;
 	}
-	if(mid == NULL)
-		return '0';
+	
 	return mid->data;
 }
 ```
@@ -536,18 +538,18 @@ Get Middle Node 3 : C
 ```cpp
 dataType getNthNodeFromLast(node *head, int n) {
 	node *temp = head;
-	int count;
+	int len;
 	
-	for(count = 0; temp != NULL; count++)
-		temp = temp->next;
-	
-	if(count < n)
-		return '0';
-	
-	temp = head;	
-	for(int i = 1; i < count - n + 1; i++)
+	for(len = 0; temp != NULL; len++)
 		temp = temp->next;
 
+	if(len < n)
+		return '0';
+	
+	temp = head;
+	for(int i = 0; i < len - n; i++)
+		temp = temp->next;
+	
 	return temp->data;
 }
 ```
@@ -563,7 +565,7 @@ insertAtStart(&head, 'C');
 insertAtStart(&head, 'B');
 insertAtStart(&head, 'A');
 printList(head);
-cout<<"Get 2nd Node From Last : "<<getNthNodeFromLast(head,1)<<endl;
+cout<<"Get 2nd Node From Last : "<<getNthNodeFromLast(head,2)<<endl;
 
 ```
 
@@ -576,3 +578,39 @@ Get 2nd Node From Last : D
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/get-nth-node-from-last.cpp)
+
+### Delete Linked List
+
+```cpp
+void deleteLinkedList(node **head) {
+	node *current = *head, *next;
+	
+	while(current != NULL) {
+		next = current->next;
+		free(current);
+		current = next;
+	}
+
+	*head = NULL;
+}
+```
+
+#### Example
+
+```cpp
+
+node *head = NULL;
+insertAtStart(&head, 'E');
+insertAtStart(&head, 'D');
+deleteLinkedList(&head);
+printList(head);
+
+```
+
+#### Output
+
+```cpp
+The linked list is empty
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/delete-linked-list.cpp)
