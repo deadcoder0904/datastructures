@@ -34,6 +34,15 @@
         },
          plugins: [
          docuteEmojify(),
+         docsearch({
+          apiKey: '9a4385e2932357945cb8550fe665911f',
+          indexName: 'datastructures.js',
+          // algolia docsearch allows you to search with tag filter
+          tags: ['english'],
+          // this plugin does require a url too
+          // where docsearch fetches contents
+          url: 'https://deadcoder0904.github.io/datastructures/#/home'
+        }),
          evanyou(),
           disqus({
             shortname: 'datastructures-1' // replace this with your own shortname
