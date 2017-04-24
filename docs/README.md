@@ -125,7 +125,7 @@ printList(head);
 
 <p class="tip">A -> B -> C -> D -> E -> NULL</p>
 
-#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/insert.cpp)
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/insert-a-node.cpp)
 
 ### Deletion
 
