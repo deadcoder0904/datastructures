@@ -661,7 +661,7 @@ Node 'A' appeared 5 times
 
 ### Reverse linked List
 
-#### 1.Iterative
+#### 1. Iterative
 
 ```cpp
 
@@ -729,3 +729,43 @@ A -> B -> C -> NULL
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/reverse-linked-list.cpp)
+
+### Detect Loop
+
+```cpp
+int detectLoop(node *head) {
+	node *slow_ptr = head, *fast_ptr = head;
+	while(slow_ptr != NULL && fast_ptr != NULL && fast_ptr->next != NULL) {
+		slow_ptr = slow_ptr->next;
+		fast_ptr = fast_ptr->next->next;
+		if(slow_ptr == fast_ptr)
+			return 1;
+	}
+	return 0;
+}
+```
+
+#### Example
+
+```cpp
+
+node *head = NULL;
+insertAtStart(&head, 'C');
+insertAtStart(&head, 'B');
+insertAtStart(&head, 'A');
+head->next->next = head;
+int loop = detectLoop(head);
+if(loop)
+	cout<<"Loop detected"<<endl;
+else
+	cout<<"Loop not detected"<<endl;
+```
+
+#### Output
+
+```cpp
+Loop detected
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/find-loop-in-linked-list.cpp)
+
