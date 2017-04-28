@@ -658,3 +658,40 @@ Node 'A' appeared 5 times
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/frequency-of-a-node.cpp)
+
+### Reverse linked List
+
+```cpp
+void reverseList(node **head) {
+	node *prev = NULL, *current = *head, *next;
+	while(current != NULL) {
+		next = current->next;
+		current->next = prev;
+		prev = current;
+		current = next;
+	}
+	*head = prev;
+}
+```
+
+#### Example
+
+```cpp
+
+node *head = NULL;
+insertAtStart(&head, 'C');
+insertAtStart(&head, 'B');
+insertAtStart(&head, 'A');
+printList(head);
+reverseList(&head);
+printList(head);
+```
+
+#### Output
+
+```cpp
+A -> B -> C -> NULL
+C -> B -> A -> NULL
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/reverse-linked-list.cpp)
