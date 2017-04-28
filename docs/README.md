@@ -661,16 +661,47 @@ Node 'A' appeared 5 times
 
 ### Reverse linked List
 
+#### 1.Iterative
+
 ```cpp
-void reverseList(node **head) {
+
+void iterativeReverse(node **head) {
 	node *prev = NULL, *current = *head, *next;
+	
 	while(current != NULL) {
 		next = current->next;
 		current->next = prev;
 		prev = current;
 		current = next;
 	}
+	
 	*head = prev;
+}
+
+```
+
+#### 2. Recursive
+
+```cpp
+
+void recursiveReverse(node **head) {
+	node *first, *rest;
+	
+	if(*head == NULL)
+		return;
+
+	first = *head;
+	rest = first->next;
+
+	if(rest == NULL)
+		return;
+
+	recursiveReverse(&rest);
+
+	first->next->next = first;
+	first->next = NULL;
+
+	*head = rest;
 }
 ```
 
@@ -683,7 +714,9 @@ insertAtStart(&head, 'C');
 insertAtStart(&head, 'B');
 insertAtStart(&head, 'A');
 printList(head);
-reverseList(&head);
+iterativeReverse(&head);
+printList(head);
+recursiveReverse(&head);
 printList(head);
 ```
 
@@ -692,6 +725,7 @@ printList(head);
 ```cpp
 A -> B -> C -> NULL
 C -> B -> A -> NULL
+A -> B -> C -> NULL
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/reverse-linked-list.cpp)
