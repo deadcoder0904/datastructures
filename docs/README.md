@@ -614,3 +614,47 @@ The linked list is empty
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/delete-linked-list.cpp)
+
+### Frequency of a node
+
+```cpp
+int frequencyOfNode(node *head, dataType key) {
+	int count = 0;
+	while(head != NULL) {
+		if(head->data == key)
+			count++;
+		head = head->next;
+	}
+	return count;
+}
+```
+
+#### Example
+
+```cpp
+
+node *head = NULL;
+insertAtStart(&head, 'E');
+insertAtStart(&head, 'D');
+insertAtStart(&head, 'A');
+insertAtStart(&head, 'F');
+insertAtStart(&head, 'A');
+insertAtStart(&head, 'C');
+insertAtStart(&head, 'A');
+insertAtStart(&head, 'B');
+insertAtStart(&head, 'C');
+insertAtStart(&head, 'A');
+insertAtStart(&head, 'A');
+printList(head);
+cout<<"Node 'A' appeared "<<frequencyOfNode(head,'A')<<" times"<<endl;
+
+```
+
+#### Output
+
+```cpp
+A -> A -> C -> B -> A -> C -> A -> F -> A -> D -> E -> NULL
+Node 'A' appeared 5 times
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/frequency-of-a-node.cpp)
