@@ -866,3 +866,46 @@ A -> B -> E -> F -> G -> NULL
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/merge-two-sorted-linked-list.cpp)
+
+### Insert Node in a Sorted List
+
+```cpp
+void sortedInsert(node **head, dataType data) {
+	if(*head == NULL) return;
+	node *temp = *head;
+	node* new_node = (node*) malloc(sizeof(node));
+	new_node->data = data;
+	while(temp != NULL && temp->next != NULL) {
+		if(temp->next->data > data) {
+			new_node->next = temp->next;
+			temp->next = new_node;
+			break;
+		}
+		temp = temp->next;
+	}
+}
+```
+
+#### Example
+
+```cpp
+
+node *head = NULL;
+insertAtStart(&head, 'F');
+insertAtStart(&head, 'E');
+insertAtStart(&head, 'C');
+insertAtStart(&head, 'B');
+insertAtStart(&head, 'A');
+printList(head);
+sortedInsert(&head, 'D');
+printList(head);
+```
+
+#### Output
+
+```cpp
+A -> B -> C -> E -> F -> NULL
+A -> B -> C -> D -> E -> F -> NULL
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/insert-node-in-sorted-list.cpp)
