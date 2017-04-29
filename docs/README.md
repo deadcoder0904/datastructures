@@ -735,7 +735,7 @@ A -> B -> C -> NULL
 ```cpp
 int detectLoop(node *head) {
 	node *slow_ptr = head, *fast_ptr = head;
-	while(slow_ptr != NULL && fast_ptr != NULL && fast_ptr->next != NULL) {
+	while(fast_ptr != NULL && fast_ptr->next != NULL) {
 		slow_ptr = slow_ptr->next;
 		fast_ptr = fast_ptr->next->next;
 		if(slow_ptr == fast_ptr)
@@ -769,3 +769,100 @@ Loop detected
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/find-loop-in-linked-list.cpp)
 
+### Merge 2 sorted Linked List
+
+#### 1. Iterative
+
+```cpp
+
+node* iterativeMergeSort(node *x, node *y) {
+	node *head = NULL;
+	while(x != NULL && y != NULL) {
+		if(x->data <= y->data) {
+			insertAtEnd(&head,x->data);
+			x = x->next;
+		}
+		else {
+			insertAtEnd(&head,y->data);
+			y = y->next;
+		}
+	}
+	if(x == NULL) 
+		while(y != NULL) {
+			insertAtEnd(&head,y->data);
+			y = y->next;	
+		}
+	else 
+		while(x != NULL) {
+			insertAtEnd(&head,x->data);
+			x = x->next;	
+		}	
+
+	return head;
+}
+
+```
+
+#### 2. Recursive
+
+```cpp
+
+node* recursiveMergeSort(node *x, node *y) {
+	node *head = NULL;
+
+	if(x == NULL) return y;
+	if(y == NULL) return x;
+
+	if(x->data <= y->data) {
+		head = x;
+		head->next = recursiveMergeSort(head->next,y);
+	}
+	else {
+		head = y;
+		head->next = recursiveMergeSort(x,head->next);
+	}
+	return head;
+}
+
+```
+
+#### Example
+
+```cpp
+
+node *head1 = NULL;
+insertAtEnd(&head1, 'A');
+insertAtEnd(&head1, 'B');
+cout<<"1st linked list is :"<<endl;
+printList(head1);
+
+node *head2 = NULL;
+insertAtEnd(&head2, 'E');
+insertAtEnd(&head2, 'F');
+insertAtEnd(&head2, 'G');
+cout<<"2nd linked list is :"<<endl;
+printList(head2);
+
+cout<<"Iteratively Merged linked list is :"<<endl;
+node *head3 = iterativeMergeSort(head1, head2);
+printList(head3);
+
+cout<<"Recursively Merged linked list is :"<<endl;
+head3 = recursiveMergeSort(head1, head2);
+printList(head3);
+```
+
+#### Output
+
+```cpp
+1st linked list is :
+A -> B -> NULL
+2nd linked list is :
+E -> F -> G -> NULL
+Iteratively Merged linked list is :
+A -> B -> E -> F -> G -> NULL
+Recursively Merged linked list is :
+A -> B -> E -> F -> G -> NULL
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/merge-two-sorted-linked-list.cpp)
