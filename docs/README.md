@@ -909,3 +909,38 @@ A -> B -> C -> D -> E -> F -> NULL
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/insert-node-in-sorted-list.cpp)
+
+### Delete Node given only Pointer to Node
+
+```cpp
+void deleteNodeOnlyGivenPointerToNode(node* ptr) {
+	node* temp = ptr->next;
+	ptr->data = temp->data;
+	ptr->next = temp->next;
+	free(temp);
+}
+```
+
+#### Example
+
+```cpp
+
+node *head = NULL;
+insertAtStart(&head, 'F');
+insertAtStart(&head, 'E');
+insertAtStart(&head, 'C');
+insertAtStart(&head, 'B');
+insertAtStart(&head, 'A');
+printList(head);
+deleteNodeOnlyGivenPointerToNode(head);
+printList(head);
+```
+
+#### Output
+
+```cpp
+A -> B -> C -> E -> F -> NULL
+B -> C -> E -> F -> NULL
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/delete-node-only-given-pointer-to-node.cpp)
