@@ -961,9 +961,7 @@ node* cloneLinkedListInReverse(node *temp) {
 	return head;
 }
 
-int isPalindrome(node *temp1,node *temp2) {
-	node *head1 = temp1, *head2 = temp2;
-
+int isPalindrome(node *head1,node *head2) {
 	while(head1 != NULL && head2 != NULL)
 		if(head1->data != head2->data)
 			return 0;
