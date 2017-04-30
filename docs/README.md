@@ -1048,7 +1048,7 @@ C -> B -> A -> NULL
 
 ```cpp
 
-void removeDuplicates(node *head) {
+void removeDuplicatesFromSortedList(node *head) {
 	if(head == NULL)
 		return;
 
@@ -1080,7 +1080,7 @@ insertAtStart(&head, 'A');
 insertAtStart(&head, 'A');
 insertAtStart(&head, 'A');
 printList(head);
-removeDuplicates(head);
+removeDuplicatesFromSortedList(head);
 printList(head);
 ```
 
@@ -1093,3 +1093,79 @@ A -> B -> C -> D -> E -> NULL
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/remove-duplicates-from-sorted-linked-list.cpp)
 
+### Remove Duplicates from unsorted list
+
+#### 1. Iterative 
+
+```cpp
+
+void removeDuplicatesFromUnsortedList(node *head) {
+	if(head == NULL)
+		return;
+
+	node *fixed = head, *moving;
+	while(fixed != NULL && fixed->next != NULL) {
+		moving = fixed;
+		while(moving->next != NULL) {
+			if(fixed->data == moving->next->data) {
+				node *next_ptr = moving->next;
+				moving->next = next_ptr->next;
+				free(next_ptr);
+			}
+			else moving = moving->next;
+		}
+		fixed = fixed->next;
+	}
+}
+```
+#### 2. Hashing 
+
+```cpp
+
+void removeDuplicatesFromUnsortedListUsingHashing(node *head) {
+	unordered_set<int> seen;
+	node *current = head, *prev = NULL;
+	while(current != NULL) {
+		if(seen.find(current->data) != seen.end()) {
+			prev->next = current->next;
+			free(current);
+		}
+		else {
+			seen.insert(current->data);
+			prev = current;
+		}
+		current = prev->next;
+	}
+}
+```
+#### Example
+
+```cpp
+
+node *head = NULL;
+insertAtStart(&head, 'C');
+insertAtStart(&head, 'A');
+insertAtStart(&head, 'B');
+insertAtStart(&head, 'A');
+insertAtStart(&head, 'A');
+printList(head);
+removeDuplicatesFromUnsortedList(head);
+printList(head);
+insertAtStart(&head, 'C');
+insertAtStart(&head, 'A');
+insertAtStart(&head, 'B');
+insertAtStart(&head, 'A');
+insertAtStart(&head, 'A');
+removeDuplicatesFromUnsortedListUsingHashing(head);
+printList(head);
+```
+
+#### Output
+
+```cpp
+A -> A -> B -> A -> C -> NULL
+A -> B -> C -> NULL
+A -> B -> C -> NULL
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/remove-duplicates-from-unsorted-linked-list.cpp)
