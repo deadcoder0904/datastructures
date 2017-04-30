@@ -1010,3 +1010,32 @@ Palindrome
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/check-if-linked-list-is-palindrome.cpp)
+
+### Recursive Print List
+
+```cpp
+
+void recursiveReversePrintList(node *head) {
+	if(head == NULL) return;
+	recursiveReversePrintList(head->next);
+	cout<<head->data<<" ->";
+}
+```
+
+#### Example
+
+```cpp
+
+printList(head);
+recursiveReversePrintList(head);
+cout<<"NULL";
+```
+
+#### Output
+
+```cpp
+A -> B -> C -> NULL
+C -> B -> A -> NULL
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/print-recursively-reverse-linked-list.cpp)
