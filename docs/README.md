@@ -944,3 +944,71 @@ B -> C -> E -> F -> NULL
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/delete-node-only-given-pointer-to-node.cpp)
+
+<p class="warning">
+	This solution doesn’t work if the node to be deleted is the last node of the list.
+</p>
+
+### Palindrome
+
+```cpp
+node* cloneLinkedListInReverse(node *temp) {
+	node *head = NULL;
+	while(temp != NULL) {
+		insertAtStart(&head,temp->data);
+		temp = temp->next;
+	}
+	return head;
+}
+
+int isPalindrome(node *temp1,node *temp2) {
+	node *head1 = temp1, *head2 = temp2;
+
+	while(head1 != NULL && head2 != NULL)
+		if(head1->data != head2->data)
+			return 0;
+		else {
+			head1 = head1->next;
+			head2 = head2->next;
+		}
+	return 1;
+}
+```
+
+#### Example
+
+```cpp
+
+node *head1 = NULL;
+insertAtStart(&head1, 'R');
+insertAtStart(&head1, 'A');
+insertAtStart(&head1, 'D');
+insertAtStart(&head1, 'A');
+insertAtStart(&head1, 'R');
+
+cout<<"1st Linked List : "<<endl;
+printList(head1);
+
+node *head2 = cloneLinkedListInReverse(head1);
+
+cout<<"2nd Linked List : "<<endl;
+printList(head2);
+
+int palindrome = isPalindrome(head1,head2);
+
+if(palindrome)
+	cout<<"Palindrome"<<endl;
+else cout<<"Not Palindrome"<<endl;
+```
+
+#### Output
+
+```cpp
+1st Linked List : 
+R -> A -> D -> A -> R -> NULL
+2nd Linked List : 
+R -> A -> D -> A -> R -> NULL
+Palindrome
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/check-if-linked-list-is-palindrome.cpp)
