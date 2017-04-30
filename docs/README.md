@@ -1026,6 +1026,10 @@ void recursiveReversePrintList(node *head) {
 
 ```cpp
 
+node *head = NULL;
+insertAtStart(&head, 'C');
+insertAtStart(&head, 'B');
+insertAtStart(&head, 'A');
 printList(head);
 recursiveReversePrintList(head);
 cout<<"NULL";
@@ -1039,3 +1043,53 @@ C -> B -> A -> NULL
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/print-recursively-reverse-linked-list.cpp)
+
+### Remove Duplicates from sorted list
+
+```cpp
+
+void removeDuplicates(node *head) {
+	if(head == NULL)
+		return;
+
+	node *next_ptr;
+
+	while(head->next != NULL)
+		if(head->data == head->next->data) {
+			next_ptr = head->next->next;
+			free(head->next);
+			head->next = next_ptr;
+		}
+		else
+			head = head->next;
+}
+```
+
+#### Example
+
+```cpp
+
+node *head = NULL;
+insertAtStart(&head, 'E');
+insertAtStart(&head, 'D');
+insertAtStart(&head, 'D');
+insertAtStart(&head, 'C');
+insertAtStart(&head, 'B');
+insertAtStart(&head, 'B');
+insertAtStart(&head, 'A');
+insertAtStart(&head, 'A');
+insertAtStart(&head, 'A');
+printList(head);
+removeDuplicates(head);
+printList(head);
+```
+
+#### Output
+
+```cpp
+A -> A -> A -> B -> B -> C -> D -> D -> E -> NULL
+A -> B -> C -> D -> E -> NULL
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/remove-duplicates-from-sorted-linked-list.cpp)
+
