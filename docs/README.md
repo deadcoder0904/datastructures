@@ -1230,3 +1230,46 @@ A -> B -> C -> E -> F -> NULL
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/swap-data-of-adjacent-pairs.cpp)
+
+### Move Last to First
+
+```cpp
+
+void moveLastToFirst(node **head) {
+	if(*head == NULL) return;
+
+	node *last = *head, *prev = NULL;
+
+	while(last->next != NULL) {
+		prev = last;
+		last = last->next;
+	}
+	prev->next = NULL;
+	last->next = *head;
+	*head = last;
+}
+```
+
+#### Example
+
+```cpp
+
+node *head = NULL;
+insertAtStart(&head, 'F');
+insertAtStart(&head, 'E');
+insertAtStart(&head, 'C');
+insertAtStart(&head, 'B');
+insertAtStart(&head, 'A');
+printList(head);
+moveLastToFirst(&head);
+printList(head);
+```
+
+#### Output
+
+```cpp
+A -> B -> C -> E -> F -> NULL
+F -> A -> B -> C -> E -> NULL
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/move-last-element-to-first.cpp)
