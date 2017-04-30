@@ -1169,3 +1169,64 @@ A -> B -> C -> NULL
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/remove-duplicates-from-unsorted-linked-list.cpp)
+
+### Swap Pairs
+
+```cpp
+
+void swap(dataType *a, dataType *b) {
+	dataType temp = *a;
+	*a = *b;
+	*b = temp;
+}
+```
+#### 1. Iterative 
+
+```cpp
+
+void swapPairsIterative(node *head) {
+	if(head == NULL) return;
+
+	while(head != NULL && head->next != NULL) {
+		swap(&(head->data),&(head->next->data));
+		head = head->next->next;
+	}
+}
+```
+#### 2. Recursive 
+
+```cpp
+
+void swapPairsRecursive(node *head) {
+	if(head == NULL || head->next == NULL) return;
+	
+	swap(&(head->data),&(head->next->data));
+	swapPairsRecursive(head->next->next);
+}
+```
+#### Example
+
+```cpp
+
+node *head = NULL;
+insertAtStart(&head, 'F');
+insertAtStart(&head, 'E');
+insertAtStart(&head, 'C');
+insertAtStart(&head, 'B');
+insertAtStart(&head, 'A');
+printList(head);
+swapPairsIterative(head);
+printList(head);
+swapPairsRecursive(head);
+printList(head);
+```
+
+#### Output
+
+```cpp
+A -> B -> C -> E -> F -> NULL
+B -> A -> E -> C -> F -> NULL
+A -> B -> C -> E -> F -> NULL
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/swap-data-of-adjacent-pairs.cpp)
