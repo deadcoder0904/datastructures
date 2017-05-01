@@ -4,7 +4,7 @@ Same Old Shite :joy: written, compiled & coded by [A2K](https://github.com/deadc
 
 ## Linked List
 
-### Structure
+### 1. Structure
 
 ```cpp
 
@@ -17,7 +17,7 @@ typedef struct node {
 
 ```
 
-### Print
+### 2. Print
 
 ```cpp
 
@@ -37,11 +37,11 @@ void printList(node *node) {
 
 ```
 
-### Insertion
+### 3. Insertion
 
 Insertion in a linked list can be done in 3 ways - 
 
-#### 1. Insert at Start
+#### A. Insert at Start
 
 ![linked-list-insertion-1](assets/img/linked-list-insertion-1.png)
 
@@ -58,7 +58,7 @@ void insertAtStart(node **head, dataType data) {
 
 ```
 
-#### 2. Insert after a Node
+#### B. Insert after a Node
 
 ![linked-list-insertion-2](assets/img/linked-list-insertion-2.png)
 
@@ -80,7 +80,7 @@ void insertAfter(node *prev_node, dataType data) {
 
 ```
 
-#### 3. Insert in the end
+#### C. Insert in the end
 
 ![linked-list-insertion-3](assets/img/linked-list-insertion-3.png)
 
@@ -127,9 +127,9 @@ printList(head);
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/insert-a-node.cpp)
 
-### Deletion
+### 4. Deletion
 
-#### 1. Deleting a given key
+#### A. Deleting a given key
 
 ![linked-list-deleting-a-given-key](./assets/img/linked-list-deleting-a-node.png)
 
@@ -159,7 +159,7 @@ void deleteNodeWithSpecifiedKey(node **head, dataType key) {
 
 ```
 
-#### 2. Deleting a key at given position
+#### B. Deleting a key at given position
 
 ![linked-list-deleting-a-key-at-given-position](./assets/img/linked-list-deleting-at-given-position.png)
 
@@ -221,9 +221,9 @@ A -> D -> NULL
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/delete-a-node.cpp)
 
-### Length
+### 5. Length
 
-#### 1. Iterative
+#### A. Iterative
 
 ```cpp
 
@@ -239,7 +239,7 @@ int iterativeLength(node *head) {
 
 ```
 
-#### 2. Recursive
+#### B. Recursive
 
 ```cpp
 
@@ -276,9 +276,9 @@ Length of Linked List using Recursive Method : 5
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/length-of-linked-list.cpp)
 
-### Search
+### 6. Search
 
-#### 1. Iterative
+#### A. Iterative
 
 ```cpp
 
@@ -294,7 +294,7 @@ int iterativeSearch(node *head, dataType key) {
 
 ```
 
-#### 2. Recursive
+#### B. Recursive
 
 ```cpp
 
@@ -333,7 +333,7 @@ Search key in a Linked List using Recursive Method : 0
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/search-in-linked-list.cpp)
 
-### Swap Nodes
+### 7. Swap Nodes
 
 ![linked-list-swap-nodes](./assets/img/linked-list-swap-nodes.png)
 
@@ -402,7 +402,7 @@ A -> D -> C -> B -> E -> NULL
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/swap-nodes-in-linked-list.cpp)
 
-### Get Nth Node
+### 8. Get Nth Node
 
 ```cpp
 dataType getNthNode(node *head, int n) {
@@ -445,9 +445,9 @@ Get 2nd Node : B
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/get-nth-node.cpp)
 
-### Get Middle Node
+### 9. Get Middle Node
 
-#### 1. Method One
+#### A. Method One
 
 ```cpp
 dataType getMiddleNode1(node *head) {
@@ -469,7 +469,7 @@ dataType getMiddleNode1(node *head) {
 }
 ```
 
-#### 2. Method Two
+#### B. Method Two
 
 ```cpp
 dataType getMiddleNode2(node *head) {
@@ -487,7 +487,7 @@ dataType getMiddleNode2(node *head) {
 }
 ```
 
-#### 3. Method Three
+#### C. Method Three
 
 ```cpp
 dataType getMiddleNode3(node *head) {
@@ -533,7 +533,7 @@ Get Middle Node 3 : C
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/print-middle-of-linked-list.cpp)
 
-### Get Nth Node from End
+### 10. Get Nth Node from End
 
 ```cpp
 dataType getNthNodeFromLast(node *head, int n) {
@@ -579,7 +579,7 @@ Get 2nd Node From Last : D
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/get-nth-node-from-last.cpp)
 
-### Delete Linked List
+### 11. Delete Linked List
 
 ```cpp
 void deleteLinkedList(node **head) {
@@ -615,7 +615,7 @@ The linked list is empty
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/delete-linked-list.cpp)
 
-### Frequency of a node
+### 12. Frequency of a node
 
 ```cpp
 int frequencyOfNode(node *head, dataType key) {
@@ -659,9 +659,9 @@ Node 'A' appeared 5 times
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/frequency-of-a-node.cpp)
 
-### Reverse linked List
+### 13. Reverse linked List
 
-#### 1. Iterative
+#### A. Iterative
 
 ```cpp
 
@@ -680,7 +680,7 @@ void iterativeReverse(node **head) {
 
 ```
 
-#### 2. Recursive
+#### B. Recursive
 
 ```cpp
 
@@ -730,7 +730,7 @@ A -> B -> C -> NULL
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/reverse-linked-list.cpp)
 
-### Detect Loop
+### 14. Detect Loop
 
 ```cpp
 int detectLoop(node *head) {
@@ -769,9 +769,9 @@ Loop detected
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/find-loop-in-linked-list.cpp)
 
-### Merge 2 sorted Linked List
+### 15. Merge 2 sorted Linked List
 
-#### 1. Iterative
+#### A. Iterative
 
 ```cpp
 
@@ -803,7 +803,7 @@ node* iterativeMergeSort(node *x, node *y) {
 
 ```
 
-#### 2. Recursive
+#### B. Recursive
 
 ```cpp
 
@@ -867,7 +867,7 @@ A -> B -> E -> F -> G -> NULL
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/merge-two-sorted-linked-list.cpp)
 
-### Insert Node in a Sorted List
+### 16. Insert Node in a Sorted List
 
 ```cpp
 void sortedInsert(node **head, dataType data) {
@@ -910,7 +910,7 @@ A -> B -> C -> D -> E -> F -> NULL
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/insert-node-in-sorted-list.cpp)
 
-### Delete Node given only Pointer to Node
+### 17. Delete Node given only Pointer to Node
 
 ```cpp
 void deleteNodeOnlyGivenPointerToNode(node* ptr) {
@@ -949,7 +949,7 @@ B -> C -> E -> F -> NULL
 	This solution doesn’t work if the node to be deleted is the last node of the list.
 </p>
 
-### Palindrome
+### 18. Palindrome
 
 ```cpp
 node* cloneLinkedListInReverse(node *temp) {
@@ -1011,7 +1011,7 @@ Palindrome
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/check-if-linked-list-is-palindrome.cpp)
 
-### Recursive Print List
+### 19. Recursive Print List
 
 ```cpp
 
@@ -1044,7 +1044,7 @@ C -> B -> A -> NULL
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/print-recursively-reverse-linked-list.cpp)
 
-### Remove Duplicates from sorted list
+### 20. Remove Duplicates from sorted list
 
 ```cpp
 
@@ -1093,9 +1093,9 @@ A -> B -> C -> D -> E -> NULL
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/remove-duplicates-from-sorted-linked-list.cpp)
 
-### Remove Duplicates from unsorted list
+### 21. Remove Duplicates from unsorted list
 
-#### 1. Iterative 
+#### A. Iterative 
 
 ```cpp
 
@@ -1118,7 +1118,7 @@ void removeDuplicatesFromUnsortedList(node *head) {
 	}
 }
 ```
-#### 2. Hashing 
+#### B. Hashing 
 
 ```cpp
 
@@ -1170,7 +1170,7 @@ A -> B -> C -> NULL
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/remove-duplicates-from-unsorted-linked-list.cpp)
 
-### Swap Pairs
+### 22. Swap Pairs
 
 ```cpp
 
@@ -1180,7 +1180,7 @@ void swap(dataType *a, dataType *b) {
 	*b = temp;
 }
 ```
-#### 1. Iterative 
+#### A. Iterative 
 
 ```cpp
 
@@ -1193,7 +1193,7 @@ void swapPairsIterative(node *head) {
 	}
 }
 ```
-#### 2. Recursive 
+#### B. Recursive 
 
 ```cpp
 
@@ -1231,7 +1231,7 @@ A -> B -> C -> E -> F -> NULL
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/swap-data-of-adjacent-pairs.cpp)
 
-### Move Last to First
+### 23. Move Last to First
 
 ```cpp
 
@@ -1274,9 +1274,9 @@ F -> A -> B -> C -> E -> NULL
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/move-last-element-to-first.cpp)
 
-### Intersection of 2 Sorted Lists
+### 24. Intersection of 2 Sorted Lists
 
-#### 1. Dummy Head Node 
+#### A. Dummy Head Node 
 
 ```cpp
 
@@ -1298,7 +1298,7 @@ node* intersectionOfTwoSortedListsUsingDummyNode(node *head1, node *head2) {
 }
 ```
 
-#### 2. Pointer of Pointer 
+#### B. Pointer of Pointer 
 
 ```cpp
 
@@ -1319,7 +1319,7 @@ node* intersectionOfTwoSortedListsUsingPointerOfPointer(node *head1, node *head2
 }
 ```
 
-#### 3. Recursion
+#### C. Recursion
 
 ```cpp
 
