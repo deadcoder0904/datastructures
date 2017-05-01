@@ -1273,3 +1273,116 @@ F -> A -> B -> C -> E -> NULL
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/move-last-element-to-first.cpp)
+
+### Intersection of 2 Sorted Lists
+
+#### 1. Dummy Head Node 
+
+```cpp
+
+node* intersectionOfTwoSortedListsUsingDummyNode(node *head1, node *head2) {
+	node head, *tail = &head;
+	head.next = NULL;
+	while(head1 != NULL && head2 != NULL) {
+		if(head1->data == head2->data) {
+			insertAtEnd(&tail->next,head1->data);
+			tail = tail->next;
+			head1 = head1->next;
+			head2 = head2->next;
+		}
+		else if(head1->data < head2->data)
+					head1 = head1->next;
+				else head2 = head2->next;
+	}
+	return head.next;
+}
+```
+
+#### 2. Pointer of Pointer 
+
+```cpp
+
+node* intersectionOfTwoSortedListsUsingPointerOfPointer(node *head1, node *head2) {
+	node *head = NULL, **tail = &head;
+	while(head1 != NULL && head2 != NULL) {
+		if(head1->data == head2->data) {
+			insertAtEnd(tail,head1->data);
+			tail = &((*tail)->next);
+			head1 = head1->next;
+			head2 = head2->next;
+		}
+		else if(head1->data < head2->data)
+					head1 = head1->next;
+				else head2 = head2->next;
+	}
+	return head;
+}
+```
+
+#### 3. Recursion
+
+```cpp
+
+node* intersectionOfTwoSortedListsUsingRecursion(node *head1, node *head2) {
+	node *head = NULL;
+	if(head1 == NULL || head2 == NULL) return NULL;
+
+	if(head1->data < head2->data)
+		return intersectionOfTwoSortedListsUsingRecursion(head1->next, head2);
+
+	if(head1->data > head2->data)
+		return intersectionOfTwoSortedListsUsingRecursion(head1, head2->next);
+	
+	node *new_node = (node *)malloc(sizeof(node));
+	new_node->data = head1->data;
+
+	new_node->next = intersectionOfTwoSortedListsUsingRecursion(head1->next, head2->next);
+	return new_node;
+}
+```
+
+#### Example
+
+```cpp
+
+node *head1 = NULL;
+insertAtEnd(&head1, 'A');
+insertAtEnd(&head1, 'B');
+insertAtEnd(&head1, 'C');
+insertAtEnd(&head1, 'D');
+insertAtEnd(&head1, 'E');
+cout<<"1st linked list : "<<endl;
+printList(head1);
+node *head2 = NULL;
+insertAtEnd(&head2, 'C');
+insertAtEnd(&head2, 'D');
+insertAtEnd(&head2, 'E');
+cout<<"2nd linked list : "<<endl;
+printList(head2);
+node *head3 = intersectionOfTwoSortedListsUsingDummyNode(head1,head2);
+cout<<"Intersection using Dummy Node : "<<endl;
+printList(head3);
+node *head4 = intersectionOfTwoSortedListsUsingPointerOfPointer(head1,head2);
+cout<<"Intersection using Pointer of Pointer : "<<endl;
+printList(head4);
+node *head5 = intersectionOfTwoSortedListsUsingRecursion(head1,head2);
+cout<<"Intersection using Recursion : "<<endl;
+printList(head5);
+```
+
+#### Output
+
+```cpp
+1st linked list : 
+A -> B -> C -> D -> E -> NULL
+2nd linked list : 
+C -> D -> E -> NULL
+Intersection using Dummy Node : 
+C -> D -> E -> NULL
+Intersection using Pointer of Pointer : 
+C -> D -> E -> NULL
+Intersection using Recursion : 
+C -> D -> E -> NULL
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/intersection-of-two-sorted-lists.cpp)
