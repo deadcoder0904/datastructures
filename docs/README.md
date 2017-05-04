@@ -1394,3 +1394,43 @@ C -> D -> E -> NULL
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/intersection-of-two-sorted-lists.cpp)
+
+### 25. Delete Alternate Nodes
+
+```cpp
+
+void deleteAlternateNodes(node **head) {
+	node *current = *head, *next_ptr;
+
+	while(current != NULL && current->next != NULL) {
+		next_ptr = current->next;
+		current->next = next_ptr->next;
+		free(next_ptr);
+		current = current->next;
+	}
+}
+```
+
+#### Example
+
+```cpp
+
+node *head = NULL;
+insertAtStart(&head, 'E');
+insertAtStart(&head, 'D');
+insertAtStart(&head, 'C');
+insertAtStart(&head, 'B');
+insertAtStart(&head, 'A');
+printList(head);
+deleteAlternateNodes(&head);
+printList(head);
+```
+
+#### Output
+
+```cpp
+A -> B -> C -> D -> E -> NULL
+A -> C -> E -> NULL
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/delete-alternate-node-of-linked-list.cpp)
