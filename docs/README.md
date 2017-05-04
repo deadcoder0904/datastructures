@@ -1502,3 +1502,60 @@ B -> D -> NULL
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/alternate-splitting-of-linked-list.cpp)
+
+### 27. Identical Linked Lists
+
+```cpp
+
+string identicalLinkedLists(node *x, node *y) {
+	if(x == y) return "Linked Lists are Identical";
+
+	while(x != NULL && y != NULL) {
+		if(x->data != y->data)
+			return "Linked Lists are Not Identical";
+		x = x->next;
+		y = y->next;
+	}
+	
+	if(x == NULL && y == NULL) 
+		return "Linked Lists are Identical";
+	return "Linked Lists are Not Identical";
+}
+```
+
+#### Example
+
+```cpp
+
+node *x = NULL;
+insertAtStart(&x, 'A');
+insertAtStart(&x, 'B');
+insertAtStart(&x, 'C');
+insertAtStart(&x, 'D');
+insertAtStart(&x, 'E');
+cout<<"Linked List 1 : "<<endl;
+printList(x);
+
+node *y = NULL;
+insertAtStart(&y, 'A');
+insertAtStart(&y, 'B');
+insertAtStart(&y, 'C');
+insertAtStart(&y, 'D');
+insertAtStart(&y, 'E');
+cout<<"Linked List 2 : "<<endl;
+printList(y);
+
+cout<<identicalLinkedLists(x,y);
+```
+
+#### Output
+
+```cpp
+Linked List 1 : 
+E -> D -> C -> B -> A -> NULL
+Linked List 2 : 
+E -> D -> C -> B -> A -> NULL
+Linked Lists are Identical
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/identical-linked-lists.cpp)
