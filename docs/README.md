@@ -1397,6 +1397,8 @@ C -> D -> E -> NULL
 
 ### 25. Delete Alternate Nodes
 
+#### A. Iterative 
+
 ```cpp
 
 void deleteAlternateNodes(node **head) {
@@ -1408,6 +1410,19 @@ void deleteAlternateNodes(node **head) {
 		free(next_ptr);
 		current = current->next;
 	}
+}
+```
+#### B. Recursive 
+
+```cpp
+
+void deleteAlternateNodesRecursive(node *head) {
+	if(head == NULL || head->next == NULL) return;
+
+	node *next_ptr = head->next;
+	head->next = next_ptr->next;
+	free(next_ptr);
+	deleteAlternateNodesRecursive(head->next);
 }
 ```
 
@@ -1422,7 +1437,11 @@ insertAtStart(&head, 'C');
 insertAtStart(&head, 'B');
 insertAtStart(&head, 'A');
 printList(head);
-deleteAlternateNodes(&head);
+cout<<"Delete Alternate Nodes Iteratively : "<<endl;
+deleteAlternateNodesIterative(head);
+printList(head);
+cout<<"Delete Alternate Nodes Recursively : "<<endl;
+deleteAlternateNodesRecursive(head);
 printList(head);
 ```
 
@@ -1430,7 +1449,10 @@ printList(head);
 
 ```cpp
 A -> B -> C -> D -> E -> NULL
+Delete Alternate Nodes Iteratively : 
 A -> C -> E -> NULL
+Delete Alternate Nodes Recursively : 
+A -> E -> NULL
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/delete-alternate-node-of-linked-list.cpp)
