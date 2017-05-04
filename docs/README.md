@@ -1401,8 +1401,8 @@ C -> D -> E -> NULL
 
 ```cpp
 
-void deleteAlternateNodes(node **head) {
-	node *current = *head, *next_ptr;
+void deleteAlternateNodesIterative(node *head) {
+	node *current = head, *next_ptr;
 
 	while(current != NULL && current->next != NULL) {
 		next_ptr = current->next;
@@ -1456,3 +1456,49 @@ A -> E -> NULL
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/delete-alternate-node-of-linked-list.cpp)
+
+### 26. Splitting Alternate Nodes
+
+```cpp
+
+void alternateSplitting(node *head, node **x, node **y) {
+	if(head == NULL) return;
+	int count = 1;
+	while(head != NULL) {
+		if(count%2 == 1)
+			insertAtEnd(x, head->data);
+		else insertAtEnd(y, head->data);
+		count++;
+		head = head->next;
+	}
+}
+```
+
+#### Example
+
+```cpp
+
+node *head = NULL;
+insertAtEnd(&head, 'A');
+insertAtEnd(&head, 'B');
+insertAtEnd(&head, 'C');
+insertAtEnd(&head, 'D');
+insertAtEnd(&head, 'E');
+printList(head);
+cout<<"Alternate Splitting of Linked List : "<<endl;
+node *x = NULL, *y = NULL;
+alternateSplitting(head, &x, &y);
+printList(x);
+printList(y);
+```
+
+#### Output
+
+```cpp
+A -> B -> C -> D -> E -> NULL
+Alternate Splitting of Linked List : 
+A -> C -> E -> NULL
+B -> D -> NULL
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/alternate-splitting-of-linked-list.cpp)
