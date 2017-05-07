@@ -1644,3 +1644,48 @@ A -> B -> C -> E -> F -> NULL
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/merge-sort-for-linked-lists.cpp)
+
+### 29. Reverse a list in Groups of Given Size
+
+```cpp
+
+node* reverseInGroups(node *head, int n) {
+	node *current = head, *prev = NULL, *next = NULL;
+	for(int i = 0; current != NULL && i < n; i++) {
+		next = current->next;
+		current->next = prev;
+		prev = current;
+		current = next;
+	}
+	
+	if(next != NULL)
+		head->next = reverseInGroups(next,n);
+
+	return prev;
+}
+
+```
+
+#### Example
+
+```cpp
+
+node *head = NULL;
+insertAtStart(&head, 'B');
+insertAtStart(&head, 'A');
+insertAtStart(&head, 'C');
+insertAtStart(&head, 'D');
+insertAtStart(&head, 'E');
+printList(head);
+printList(reverseInGroups(head,3));
+```
+
+#### Output
+
+```cpp
+
+E -> D -> C -> A -> B -> NULL
+C -> D -> E -> B -> A -> NULL
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/reverse-linked-list-in-groups-of-given-size.cpp)
