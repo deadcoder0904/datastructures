@@ -1743,3 +1743,54 @@ C -> B -> A -> D -> E -> F -> I -> H -> G -> J -> NULL
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/alternate-reverse-linked-list-in-groups-of-given-size.cpp)
+
+### 31. Delete Nodes Having Greater Value on Right Side
+
+```cpp
+
+void delNodes(node *head) {
+	node *current = head, *maxnode = head;
+	while(current != NULL && current->next != NULL)
+		if(current->next->data < maxnode->data) {
+			node *temp = current->next;
+			current->next = temp->next;
+			free(temp);
+		}
+		else {
+			current = current->next;
+			maxnode = current;
+		}
+}
+
+void deleteNodesHavingGreaterValueOnRightSideIterative(node **head) {
+	if(*head == NULL) return;
+
+	iterativeReverse(head);
+	delNodes(*head);
+	iterativeReverse(head);
+}
+```
+
+#### Example
+
+```cpp
+
+node *head = NULL;
+insertAtStart(&head, 'B');
+insertAtStart(&head, 'A');
+insertAtStart(&head, 'D');
+insertAtStart(&head, 'C');
+insertAtStart(&head, 'E');
+printList(head);
+deleteNodesHavingGreaterValueOnRightSideIterative(&head);
+printList(head);
+```
+
+#### Output
+
+```cpp
+E -> C -> D -> A -> B -> NULL
+E -> D -> B -> NULL
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/delete-nodes-which-have-greater-value-on-right-side.cpp)
