@@ -1580,3 +1580,67 @@ Linked Lists are Identical
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/identical-linked-lists.cpp)
+
+### 28. Merge Sort
+
+```cpp
+
+void FrontBackSplit(node *head, node **x, node **y) {	
+	if(head == NULL || head->next == NULL) {
+		*x = head;
+		*y = NULL;
+		return;
+	}
+
+	node *slow = head, *fast = head->next;
+
+	while(fast != NULL) {
+		fast = fast->next;
+		if(fast != NULL) {
+			slow = slow->next;
+			fast = fast->next;
+		}
+	}
+
+	*x = head;
+	*y = slow->next;
+	slow->next = NULL;
+}
+
+void mergeSort(node **headRef) {
+	node *head = *headRef;
+	
+	if(head == NULL || head->next == NULL) return;
+
+	node *x, *y;
+	FrontBackSplit(head,&x,&y);
+	mergeSort(&x);
+	mergeSort(&y);
+	*headRef = iterativeMergeSort(x,y);
+}
+
+```
+
+#### Example
+
+```cpp
+
+node *head = NULL;
+insertAtEnd(&head, 'F');
+insertAtEnd(&head, 'E');
+insertAtEnd(&head, 'C');
+insertAtEnd(&head, 'B');
+insertAtEnd(&head, 'A');
+printList(head);
+mergeSort(&head);
+printList(head);
+```
+
+#### Output
+
+```cpp
+F -> E -> C -> B -> A -> NULL
+A -> B -> C -> E -> F -> NULL
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/merge-sort-for-linked-lists.cpp)

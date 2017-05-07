@@ -16,6 +16,8 @@ These resources helped me a lot, hope it helps you as well. If you find any usef
 
 [Benoit Vallon's Data Structures using Javascript](http://blog.benoitvallon.com/category/data-structures-in-javascript/)
 
+[Data Structures in Javascript](https://pmary.gitbooks.io/data-structure-in-javascript/content/)
+
 ### Videos
 
 [My Code School YouTube Tutorials](https://www.youtube.com/playlist?list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P)
