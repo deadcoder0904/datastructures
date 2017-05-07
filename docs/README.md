@@ -1689,3 +1689,57 @@ C -> D -> E -> B -> A -> NULL
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/reverse-linked-list-in-groups-of-given-size.cpp)
+
+### 30. Alternate Reverse a list in Groups of Given Size
+
+```cpp
+
+node* alternateReverseInGroups(node *head, int n) {
+	node *current = head, *prev = NULL, *next = NULL;
+	for(int i = 0; current != NULL && i < n; i++) {
+		next = current->next;
+		current->next = prev;
+		prev = current;
+		current = next;
+	}
+
+	if(head != NULL)
+		head->next = current;
+
+	for(int i = 0; current != NULL && i < n-1; i++)
+		current = current->next;
+	
+	if(current != NULL)
+		current->next = alternateReverseInGroups(current->next,n);
+
+	return prev;
+}
+```
+
+#### Example
+
+```cpp
+
+node *head = NULL;
+insertAtStart(&head, 'J');
+insertAtStart(&head, 'I');
+insertAtStart(&head, 'H');
+insertAtStart(&head, 'G');
+insertAtStart(&head, 'F');
+insertAtStart(&head, 'E');
+insertAtStart(&head, 'D');
+insertAtStart(&head, 'C');
+insertAtStart(&head, 'B');
+insertAtStart(&head, 'A');
+printList(head);
+printList(alternateReverseInGroups(head,3));
+```
+
+#### Output
+
+```cpp
+A -> B -> C -> D -> E -> F -> G -> H -> I -> J -> NULL
+C -> B -> A -> D -> E -> F -> I -> H -> G -> J -> NULL
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/alternate-reverse-linked-list-in-groups-of-given-size.cpp)
