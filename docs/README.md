@@ -1757,7 +1757,7 @@ void delNodes(node *head) {
 		else current = current->next;
 }
 
-void deleteNodesHavingGreaterValueOnRightSideIterative(node **head) {
+void deleteNodesHavingGreaterValueOnRightSide(node **head) {
 	if(*head == NULL) return;
 
 	iterativeReverse(head);
@@ -1777,7 +1777,7 @@ insertAtStart(&head, 'D');
 insertAtStart(&head, 'C');
 insertAtStart(&head, 'E');
 printList(head);
-deleteNodesHavingGreaterValueOnRightSideIterative(&head);
+deleteNodesHavingGreaterValueOnRightSide(&head);
 printList(head);
 ```
 
@@ -1789,3 +1789,56 @@ E -> D -> B -> NULL
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/delete-nodes-which-have-greater-value-on-right-side.cpp)
+
+### 32. Segregate Even & Odd Nodes
+
+```cpp
+
+void segregateEvenAndOdd(node **head) {
+	if(*head == NULL) return;
+
+	node *temp = *head, *even = NULL, *odd = NULL;
+	while(temp != NULL) {
+		if(temp->data & 1)
+			insertAtEnd(&odd,temp->data);
+		else insertAtEnd(&even,temp->data);
+		temp = temp->next;
+	}
+
+	if(even == NULL) {
+		*head = odd;
+		return;
+	}
+
+	temp = even;
+	while(temp->next != NULL)
+		temp = temp->next;
+	
+	temp->next = odd;
+	*head = even;	
+}
+```
+
+#### Example
+
+```cpp
+
+node *head = NULL;
+insertAtEnd(&head, 'B');
+insertAtEnd(&head, 'A');
+insertAtEnd(&head, 'C');
+insertAtEnd(&head, 'D');
+insertAtEnd(&head, 'E');
+printList(head);
+segregateEvenAndOdd(&head);
+printList(head);
+```
+
+#### Output
+
+```cpp
+B -> A -> C -> D -> E -> NULL
+B -> D -> A -> C -> E -> NULL
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/segregate-even-odd-nodes-in-linked-list.cpp)
