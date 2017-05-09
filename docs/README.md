@@ -1332,7 +1332,6 @@ node* intersectionOfTwoSortedListsUsingPointerOfPointer(node *head1, node *head2
 ```cpp
 
 node* intersectionOfTwoSortedListsUsingRecursion(node *head1, node *head2) {
-	node *head = NULL;
 	if(head1 == NULL || head2 == NULL) return NULL;
 
 	if(head1->data < head2->data)
