@@ -1842,3 +1842,53 @@ B -> D -> A -> C -> E -> NULL
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/segregate-even-odd-nodes-in-linked-list.cpp)
+
+### 33. Find and Remove Loop
+
+```cpp
+
+int detectAndRemoveLoop(node *head) {
+    node *slow_ptr = head, *fast_ptr = head->next;
+    while(fast_ptr != NULL && fast_ptr->next != NULL) {
+        if(slow_ptr == fast_ptr)
+            break;
+        slow_ptr = slow_ptr->next;
+        fast_ptr = fast_ptr->next->next;
+    }
+    
+    if(slow_ptr != fast_ptr) 
+        return 0;
+
+    slow_ptr = head;
+    while(slow_ptr != fast_ptr->next) {
+        slow_ptr = slow_ptr->next;
+        fast_ptr = fast_ptr->next;
+    }
+    fast_ptr->next = NULL;
+    return 1;
+}
+```
+
+#### Example
+
+```cpp
+
+node *head = NULL;
+insertAtStart(&head, 'C');
+insertAtStart(&head, 'B');
+insertAtStart(&head, 'A');
+head->next->next->next = head->next;
+int loop = detectAndRemoveLoop(head);
+if(loop)
+    cout<<"Loop detected and removed"<<endl;
+else
+    cout<<"Loop not detected"<<endl;
+```
+
+#### Output
+
+```cpp
+Loop detected and removed
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/detect-and-remove-loop.cpp)
