@@ -2115,3 +2115,48 @@ Triplet Found : 61, 23, 212
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/find-triplet-from-3-linked-lists-with-sum-equal-to-given-no.cpp)
+
+### 37. Rotate List `n` times Counter Clockwise
+
+```cpp
+
+void rotate(node **head, int n) {
+	node *temp = *head;
+	
+	while(temp->next != NULL)
+		temp = temp->next;
+
+	temp->next = *head;
+
+	temp = *head;
+	while(--n)
+		temp = temp->next;
+	*head = temp->next;
+	temp->next = NULL;
+}
+```
+
+#### Example
+
+```cpp
+
+node *head = NULL;
+insertAtStart(&head, 'F');
+insertAtStart(&head, 'E');
+insertAtStart(&head, 'D');
+insertAtStart(&head, 'C');
+insertAtStart(&head, 'B');
+insertAtStart(&head, 'A');
+printList(head);
+rotate(&head,4);
+printList(head);
+```
+
+#### Output
+
+```cpp
+A -> B -> C -> D -> E -> F -> NULL
+E -> F -> A -> B -> C -> D -> NULL
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/rotate-a-linked-list.cpp)
