@@ -2045,3 +2045,73 @@ B -> C -> A -> D -> E -> F -> G -> H -> NULL
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/union-and-intersection-of-linked-lists.cpp)
+
+### 36. Triplet from 3 lists with sum equal to given no.
+
+```cpp
+
+bool triplet(node *x, node *yTemp, node *zTemp, dataType no) {
+	mergeSort(&yTemp);
+	mergeSort(&zTemp);
+	iterativeReverse(&zTemp);
+
+	while(x != NULL) {
+		node *y = yTemp, *z = zTemp;
+		while(y != NULL && z != NULL) {
+			dataType sum = x->data + y->data + z->data;
+			if(sum == no) {
+				cout<<"Triplet Found : "<<x->data<<", "<<y->data<<", "<<z->data<<endl;
+				return true;
+			}
+			else if(sum < no)
+						y = y->next;
+					else z = z->next;
+		}
+		x = x->next;
+	}
+	cout<<"No Triplet Found"<<endl;
+	return false;
+}
+```
+
+#### Example
+
+```cpp
+
+node *x = NULL;
+insertAtEnd(&x, 14);
+insertAtEnd(&x, 21);
+insertAtEnd(&x, 32);
+insertAtEnd(&x, 61);
+insertAtEnd(&x, 71);
+printList(x);
+
+node *y = NULL;
+insertAtEnd(&y, 11);
+insertAtEnd(&y, 92);
+insertAtEnd(&y, 23);
+insertAtEnd(&y, 86);
+insertAtEnd(&y, 107);
+printList(y);
+
+node *z = NULL;
+insertAtEnd(&z, 321);
+insertAtEnd(&z, 212);
+insertAtEnd(&z, 32);
+insertAtEnd(&z, 65);
+insertAtEnd(&z, 77);
+printList(z);
+
+triplet(x,y,z,296);
+```
+
+#### Output
+
+```cpp
+14 -> 21 -> 32 -> 61 -> 71 -> NULL
+11 -> 92 -> 23 -> 86 -> 107 -> NULL
+321 -> 212 -> 32 -> 65 -> 77 -> NULL
+Triplet Found : 61, 23, 212
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/find-triplet-from-3-linked-lists-with-sum-equal-to-given-no.cpp)
