@@ -1892,3 +1892,75 @@ Loop detected and removed
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/detect-and-remove-loop.cpp)
+
+### 34. Add Two Linked Lists
+
+```cpp
+
+typedef long long ll;
+
+void putNumberIntoLinkedList(node **ptr, ll no) {
+	while(no) {
+		insertAtEnd(&(*ptr), no%10);
+		no /= 10;
+	}
+}
+
+ll getNumberFromLinkedList(node *ptr) {
+	ll multiplier = 1, no = 0;
+	while(ptr != NULL) {
+		no += ptr->data * multiplier;
+		multiplier *= 10;
+		ptr = ptr->next;
+	}
+	return no;
+}
+
+node* addTwoLists(node *x, node *y) {
+	ll x_no = 0, y_no = 0, sum = 0, multiplier = 1;
+	
+	x_no = getNumberFromLinkedList(x);
+	y_no = getNumberFromLinkedList(y);
+	
+	node *ptr = NULL;
+	putNumberIntoLinkedList(&ptr,x_no + y_no);
+	return ptr;
+}
+```
+
+#### Example
+
+```cpp
+
+ll m, n;
+cout<<"Enter 1st number: ";
+cin>>m;
+cout<<"Enter 2nd number: ";
+cin>>n;
+node *m_ptr = NULL, *n_ptr = NULL;
+
+putNumberIntoLinkedList(&m_ptr, m);
+putNumberIntoLinkedList(&n_ptr, n);
+
+cout<<"1st number: ";
+printList(m_ptr);
+
+cout<<"2nd number: ";
+printList(n_ptr);
+
+node *sum = addTwoLists(m_ptr, n_ptr);
+cout<<"Sum of Linked Lists: ";
+printList(sum);
+```
+
+#### Output
+
+```cpp
+Enter 1st number: 64957
+Enter 2nd number: 48
+1st number: 7 -> 5 -> 9 -> 4 -> 6 -> NULL
+2nd number: 8 -> 4 -> NULL
+Sum of Linked Lists: 5 -> 0 -> 0 -> 5 -> 6 -> NULL
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/add-two-numbers-represented-by-linked-list.cpp)
