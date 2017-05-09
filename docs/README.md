@@ -2160,3 +2160,64 @@ E -> F -> A -> B -> C -> D -> NULL
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/rotate-a-linked-list.cpp)
+
+### 38. Sort Lists of 0s, 1s & 2s
+
+```cpp
+
+void sort(node *head) {
+	node *temp = head;
+	int count[3] = {0,0,0};
+	
+	while(temp != NULL) {
+		count[temp->data]++;
+		temp = temp->next;
+	}
+
+	temp = head;
+	while(temp != NULL) {
+		if(count[0]) {
+			temp->data = 0;
+			count[0]--;
+		}
+		else 
+			if(count[1]) {
+				temp->data = 1;
+				count[1]--;
+			}
+			else temp->data = 2;
+		temp = temp->next;	
+	}
+}
+```
+
+#### Example
+
+```cpp
+
+node *head = NULL;
+insertAtEnd(&head, 0);
+insertAtEnd(&head, 1);
+insertAtEnd(&head, 2);
+insertAtEnd(&head, 1);
+insertAtEnd(&head, 0);
+insertAtEnd(&head, 2);
+insertAtEnd(&head, 2);
+insertAtEnd(&head, 2);
+insertAtEnd(&head, 0);
+insertAtEnd(&head, 1);
+insertAtEnd(&head, 2);
+insertAtEnd(&head, 1);
+printList(head);
+sort(head);
+printList(head);
+```
+
+#### Output
+
+```cpp
+0 -> 1 -> 2 -> 1 -> 0 -> 2 -> 2 -> 2 -> 0 -> 1 -> 2 -> 1 -> NULL
+0 -> 0 -> 0 -> 1 -> 1 -> 1 -> 1 -> 2 -> 2 -> 2 -> 2 -> 2 -> NULL
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/sort-linked-list-of-0s-1s-2s.cpp)
