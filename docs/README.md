@@ -1964,3 +1964,84 @@ Sum of Linked Lists: 5 -> 0 -> 0 -> 5 -> 6 -> NULL
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/add-two-numbers-represented-by-linked-list.cpp)
+
+### 35. Union & Intersection
+
+```cpp
+
+node* intersectionofLinkedLists(node *x, node *y) {
+	node *head = NULL;
+	unordered_set<char> seen;
+	while(x != NULL) {
+		seen.insert(x->data);
+		x = x->next;
+	}
+
+	while(y != NULL) {
+		if(seen.find(y->data) != seen.end())
+			insertAtEnd(&head,y->data);
+		y = y->next;
+	}
+
+	return head;
+}
+
+node* unionofLinkedLists(node *x, node *y) {
+	node *head = NULL;
+	unordered_set<char> seen;
+
+	while(x != NULL) {
+		seen.insert(x->data);
+		insertAtEnd(&head,x->data);
+		x = x->next;
+	}
+
+	while(y != NULL) {
+		if(seen.find(y->data) == seen.end())
+			insertAtEnd(&head,y->data);
+		y = y->next;
+	}
+
+	return head;
+}
+```
+
+#### Example
+
+```cpp
+
+node *x = NULL;
+insertAtEnd(&x, 'B');
+insertAtEnd(&x, 'C');
+insertAtEnd(&x, 'A');
+insertAtEnd(&x, 'D');
+insertAtEnd(&x, 'E');
+printList(x);
+
+node *y = NULL;
+insertAtEnd(&y, 'F');
+insertAtEnd(&y, 'C');
+insertAtEnd(&y, 'G');
+insertAtEnd(&y, 'D');
+insertAtEnd(&y, 'H');
+printList(y);
+
+cout<<"Intersection: "<<endl;
+printList(intersectionofLinkedLists(x,y));
+
+cout<<"Union: "<<endl;
+printList(unionofLinkedLists(x,y));
+```
+
+#### Output
+
+```cpp
+B -> C -> A -> D -> E -> NULL
+F -> C -> G -> D -> H -> NULL
+Intersection: 
+C -> D -> NULL
+Union: 
+B -> C -> A -> D -> E -> F -> G -> H -> NULL
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/union-and-intersection-of-linked-lists.cpp)
