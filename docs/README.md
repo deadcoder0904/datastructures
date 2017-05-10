@@ -2165,6 +2165,8 @@ E -> F -> A -> B -> C -> D -> NULL
 
 ```cpp
 
+typedef int dataType;
+
 void sort(node *head) {
 	node *temp = head;
 	int count[3] = {0,0,0};
@@ -2221,3 +2223,59 @@ printList(head);
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/sort-linked-list-of-0s-1s-2s.cpp)
+
+### 39. Skip `M` nodes Delete `N` nodes
+
+```cpp
+
+typedef int dataType;
+
+void skipMDeleteN(node *head, int M, int N) {
+	node *temp = head;
+	while(temp != NULL) {
+
+		for(int i = 0; i < M-1; i++)
+			temp = temp->next;
+
+		node *prev_ptr = temp;
+		temp = temp->next;
+
+		for(int i = 0; i < N; i++) {
+			node *next_ptr = temp->next;
+			free(temp);
+			temp = next_ptr;
+		}
+
+		prev_ptr->next = temp;
+	}
+}
+```
+
+#### Example
+
+```cpp
+
+node *head = NULL;
+insertAtEnd(&head, 1);
+insertAtEnd(&head, 2);
+insertAtEnd(&head, 3);
+insertAtEnd(&head, 4);
+insertAtEnd(&head, 5);
+insertAtEnd(&head, 6);
+insertAtEnd(&head, 7);
+insertAtEnd(&head, 8);
+insertAtEnd(&head, 9);
+insertAtEnd(&head, 10);
+printList(head);
+skipMDeleteN(head,3,2);
+printList(head);
+```
+
+#### Output
+
+```cpp
+1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> NULL
+1 -> 2 -> 3 -> 6 -> 7 -> 8 -> NULL
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/skip-m-delete-n.cpp)
