@@ -1017,7 +1017,11 @@ body .markdown-body
 </style><title>README</title></head><body><article class="markdown-body"><h1 id="data-structures-in-c"><a name="user-content-data-structures-in-c" href="#data-structures-in-c" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Data Structures in C++</h1>
 <p>Same Old Shite <img align="absmiddle" alt=":joy:" class="emoji" height="20px" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f602.png" title=":joy:" width="20px" /> written, compiled &amp; coded by <a href="https://github.com/deadcoder0904">A2K</a></p>
 <h2 id="linked-list"><a name="user-content-linked-list" href="#linked-list" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Linked List</h2>
-<h3 id="structure"><a name="user-content-structure" href="#structure" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Structure</h3>
+<p>Like arrays, Linked List is a linear data structure. Unlike arrays, linked list elements are not stored at contiguous location; the elements are linked using pointers.</p>
+<h2 id="singly-linked-list"><a name="user-content-singly-linked-list" href="#singly-linked-list" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Singly Linked List</h2>
+<p>It points in only one direction</p>
+<p><img alt="linked-list" src="/media/deadcoder0904/DEAD/Coding/C%2B%2B/datastructures/docs/assets/img/linked-list.png" /></p>
+<h3 id="1-structure"><a name="user-content-1-structure" href="#1-structure" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1. Structure</h3>
 <pre><code class="cpp">
 typedef char dataType;
 
@@ -1028,9 +1032,15 @@ typedef struct node {
 
 </code></pre>
 
-<h3 id="printing"><a name="user-content-printing" href="#printing" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Printing</h3>
+<h3 id="2-print"><a name="user-content-2-print" href="#2-print" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2. Print</h3>
 <pre><code class="cpp">
 void printList(node *node) {
+
+    if(node == NULL) {
+        cout&lt;&lt;&quot;The linked list is empty&quot;&lt;&lt;endl;
+        return;
+    }
+
     while(node != NULL) {
         cout&lt;&lt;(node-&gt;data)&lt;&lt;&quot; -&gt; &quot;;
         node = node-&gt;next;
@@ -1040,9 +1050,9 @@ void printList(node *node) {
 
 </code></pre>
 
-<h3 id="insertion"><a name="user-content-insertion" href="#insertion" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Insertion</h3>
+<h3 id="3-insertion"><a name="user-content-3-insertion" href="#3-insertion" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3. Insertion</h3>
 <p>Insertion in a linked list can be done in 3 ways - </p>
-<h4 id="1-insert-at-start"><a name="user-content-1-insert-at-start" href="#1-insert-at-start" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1. Insert at Start</h4>
+<h4 id="a-insert-at-start"><a name="user-content-a-insert-at-start" href="#a-insert-at-start" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>A. Insert at Start</h4>
 <p><img alt="linked-list-insertion-1" src="/media/deadcoder0904/DEAD/Coding/C%2B%2B/datastructures/docs/assets/img/linked-list-insertion-1.png" /></p>
 <pre><code class="cpp">
 void insertAtStart(node **head, dataType data) {
@@ -1056,7 +1066,7 @@ void insertAtStart(node **head, dataType data) {
 
 </code></pre>
 
-<h4 id="2-insert-after-a-node"><a name="user-content-2-insert-after-a-node" href="#2-insert-after-a-node" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2. Insert after a Node</h4>
+<h4 id="b-insert-after-a-node"><a name="user-content-b-insert-after-a-node" href="#b-insert-after-a-node" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>B. Insert after a Node</h4>
 <p><img alt="linked-list-insertion-2" src="/media/deadcoder0904/DEAD/Coding/C%2B%2B/datastructures/docs/assets/img/linked-list-insertion-2.png" /></p>
 <pre><code class="cpp">
 void insertAfter(node *prev_node, dataType data) {
@@ -1075,7 +1085,7 @@ void insertAfter(node *prev_node, dataType data) {
 
 </code></pre>
 
-<h4 id="3-insert-in-the-end"><a name="user-content-3-insert-in-the-end" href="#3-insert-in-the-end" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3. Insert in the end</h4>
+<h4 id="c-insert-in-the-end"><a name="user-content-c-insert-in-the-end" href="#c-insert-in-the-end" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>C. Insert in the end</h4>
 <p><img alt="linked-list-insertion-3" src="/media/deadcoder0904/DEAD/Coding/C%2B%2B/datastructures/docs/assets/img/linked-list-insertion-3.png" /></p>
 <pre><code class="cpp">
 void insertAtEnd(node **head, dataType data) {
@@ -1114,9 +1124,9 @@ printList(head);
 <h4 id="output"><a name="user-content-output" href="#output" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Output</h4>
 <p class="tip">A -> B -> C -> D -> E -> NULL</p>
 
-<h4 id="complete-program"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/insert.cpp">Complete Program</a></h4>
-<h3 id="deletion"><a name="user-content-deletion" href="#deletion" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Deletion</h3>
-<h4 id="1-deleting-a-given-key"><a name="user-content-1-deleting-a-given-key" href="#1-deleting-a-given-key" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1. Deleting a given key</h4>
+<h4 id="complete-program"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/insert-a-node.cpp">Complete Program</a></h4>
+<h3 id="4-deletion"><a name="user-content-4-deletion" href="#4-deletion" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4. Deletion</h3>
+<h4 id="a-deleting-a-given-key"><a name="user-content-a-deleting-a-given-key" href="#a-deleting-a-given-key" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>A. Deleting a given key</h4>
 <p><img alt="linked-list-deleting-a-given-key" src="/media/deadcoder0904/DEAD/Coding/C%2B%2B/datastructures/docs/assets/img/linked-list-deleting-a-node.png" /></p>
 <pre><code class="cpp">
 void deleteNodeWithSpecifiedKey(node **head, dataType key) {
@@ -1143,7 +1153,7 @@ void deleteNodeWithSpecifiedKey(node **head, dataType key) {
 
 </code></pre>
 
-<h4 id="2-deleting-a-key-at-given-position"><a name="user-content-2-deleting-a-key-at-given-position" href="#2-deleting-a-key-at-given-position" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2. Deleting a key at given position</h4>
+<h4 id="b-deleting-a-key-at-given-position"><a name="user-content-b-deleting-a-key-at-given-position" href="#b-deleting-a-key-at-given-position" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>B. Deleting a key at given position</h4>
 <p><img alt="linked-list-deleting-a-key-at-given-position" src="/media/deadcoder0904/DEAD/Coding/C%2B%2B/datastructures/docs/assets/img/linked-list-deleting-at-given-position.png" /></p>
 <pre><code class="cpp">
 void deleteNodeWithSpecifiedPostion(node **head,int position) {
@@ -1197,8 +1207,8 @@ A -&gt; D -&gt; NULL
 </code></pre>
 
 <h4 id="complete-program_1"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/delete-a-node.cpp">Complete Program</a></h4>
-<h3 id="length"><a name="user-content-length" href="#length" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Length</h3>
-<h4 id="1-iterative"><a name="user-content-1-iterative" href="#1-iterative" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1. Iterative</h4>
+<h3 id="5-length"><a name="user-content-5-length" href="#5-length" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>5. Length</h3>
+<h4 id="a-iterative"><a name="user-content-a-iterative" href="#a-iterative" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>A. Iterative</h4>
 <pre><code class="cpp">
 int iterativeLength(node *head) {
     int length = 0;
@@ -1212,7 +1222,7 @@ int iterativeLength(node *head) {
 
 </code></pre>
 
-<h4 id="2-recursive"><a name="user-content-2-recursive" href="#2-recursive" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2. Recursive</h4>
+<h4 id="b-recursive"><a name="user-content-b-recursive" href="#b-recursive" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>B. Recursive</h4>
 <pre><code class="cpp">
 int recursiveLength(node *head) {
     if(head == NULL)
@@ -1242,8 +1252,8 @@ Length of Linked List using Recursive Method : 5
 </code></pre>
 
 <h4 id="complete-program_2"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/length-of-linked-list.cpp">Complete Program</a></h4>
-<h3 id="search"><a name="user-content-search" href="#search" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Search</h3>
-<h4 id="1-iterative_1"><a name="user-content-1-iterative_1" href="#1-iterative_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1. Iterative</h4>
+<h3 id="6-search"><a name="user-content-6-search" href="#6-search" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>6. Search</h3>
+<h4 id="a-iterative_1"><a name="user-content-a-iterative_1" href="#a-iterative_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>A. Iterative</h4>
 <pre><code class="cpp">
 int iterativeSearch(node *head, dataType key) {
     node *temp = head;
@@ -1257,7 +1267,7 @@ int iterativeSearch(node *head, dataType key) {
 
 </code></pre>
 
-<h4 id="2-recursive_1"><a name="user-content-2-recursive_1" href="#2-recursive_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2. Recursive</h4>
+<h4 id="b-recursive_1"><a name="user-content-b-recursive_1" href="#b-recursive_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>B. Recursive</h4>
 <pre><code class="cpp">
 int recursiveSearch(node *head, dataType key) {
     if(head == NULL)
@@ -1289,7 +1299,7 @@ Search key in a Linked List using Recursive Method : 0
 </code></pre>
 
 <h4 id="complete-program_3"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/search-in-linked-list.cpp">Complete Program</a></h4>
-<h3 id="swap-nodes"><a name="user-content-swap-nodes" href="#swap-nodes" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Swap Nodes</h3>
+<h3 id="7-swap-nodes"><a name="user-content-7-swap-nodes" href="#7-swap-nodes" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>7. Swap Nodes</h3>
 <p><img alt="linked-list-swap-nodes" src="/media/deadcoder0904/DEAD/Coding/C%2B%2B/datastructures/docs/assets/img/linked-list-swap-nodes.png" /></p>
 <pre><code class="cpp">
 void swapNodes(node **head, dataType x, dataType y) {
@@ -1350,7 +1360,7 @@ A -&gt; D -&gt; C -&gt; B -&gt; E -&gt; NULL
 </code></pre>
 
 <h4 id="complete-program_4"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/swap-nodes-in-linked-list.cpp">Complete Program</a></h4>
-<h3 id="get-nth-node"><a name="user-content-get-nth-node" href="#get-nth-node" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Get Nth Node</h3>
+<h3 id="8-get-nth-node"><a name="user-content-8-get-nth-node" href="#8-get-nth-node" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>8. Get Nth Node</h3>
 <pre><code class="cpp">dataType getNthNode(node *head, int n) {
     node *temp = head;
     int count = 0;
@@ -1386,32 +1396,28 @@ Get 2nd Node : B
 </code></pre>
 
 <h4 id="complete-program_5"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/get-nth-node.cpp">Complete Program</a></h4>
-<h3 id="get-middle-node"><a name="user-content-get-middle-node" href="#get-middle-node" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Get Middle Node</h3>
-<h4 id="1-method-one"><a name="user-content-1-method-one" href="#1-method-one" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1. Method One</h4>
+<h3 id="9-get-middle-node"><a name="user-content-9-get-middle-node" href="#9-get-middle-node" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>9. Get Middle Node</h3>
+<h4 id="a-method-one"><a name="user-content-a-method-one" href="#a-method-one" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>A. Method One</h4>
 <pre><code class="cpp">dataType getMiddleNode1(node *head) {
-    node *temp = head;
+    if(head == NULL)
+        return '0';
+
     int count = 0;
+    node *temp = head;
 
-    while(temp != NULL) {
-        count++;
+    for(count = 0; temp != NULL; count++) 
         temp = temp-&gt;next;
-    }
 
-    int middle = count / 2 + 1;
     temp = head;
-    count = 0;
 
-    while(count != middle-1) {
-        count++;
+    for(int i = 0; i &lt; count/2; i++)
         temp = temp-&gt;next;
-    }
 
     return temp-&gt;data;
 }
-
 </code></pre>
 
-<h4 id="2-method-two"><a name="user-content-2-method-two" href="#2-method-two" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2. Method Two</h4>
+<h4 id="b-method-two"><a name="user-content-b-method-two" href="#b-method-two" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>B. Method Two</h4>
 <pre><code class="cpp">dataType getMiddleNode2(node *head) {
     if(head == NULL)
         return '0';
@@ -1427,23 +1433,65 @@ Get 2nd Node : B
 }
 </code></pre>
 
-<h4 id="3-method-three"><a name="user-content-3-method-three" href="#3-method-three" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3. Method Three</h4>
-<pre><code class="cpp">dataType getNthNode(node *head, int n) {
-    node *temp = head;
-    int count = 0;
+<h4 id="c-method-three"><a name="user-content-c-method-three" href="#c-method-three" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>C. Method Three</h4>
+<pre><code class="cpp">dataType getMiddleNode3(node *head) {
+    if(head == NULL)
+        return '0';
 
-    while(temp != NULL) {
-        if(count == n)
-            return temp-&gt;data;
-        count++;
-        temp = temp-&gt;next;
+    node *mid = head;
+
+    for(int count = 0; head != NULL; count++) {
+        if(count &amp; 1)
+            mid = mid-&gt;next;
+        head = head-&gt;next;
     }
 
-    return '0';
+    return mid-&gt;data;
 }
 </code></pre>
 
 <h4 id="example_6"><a name="user-content-example_6" href="#example_6" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Example</h4>
+<pre><code class="cpp">node *head = NULL;
+insertAtStart(&amp;head, 'E');
+insertAtStart(&amp;head, 'D');
+insertAtStart(&amp;head, 'C');
+insertAtStart(&amp;head, 'B');
+insertAtStart(&amp;head, 'A');
+printList(head);
+cout&lt;&lt;&quot;Get Middle Node 1 : &quot;&lt;&lt;getMiddleNode1(head)&lt;&lt;endl;
+cout&lt;&lt;&quot;Get Middle Node 2 : &quot;&lt;&lt;getMiddleNode2(head)&lt;&lt;endl;
+cout&lt;&lt;&quot;Get Middle Node 3 : &quot;&lt;&lt;getMiddleNode3(head)&lt;&lt;endl;
+
+</code></pre>
+
+<h4 id="output_6"><a name="user-content-output_6" href="#output_6" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Output</h4>
+<pre><code class="cpp">A -&gt; B -&gt; C -&gt; D -&gt; E -&gt; NULL
+Get Middle Node 1 : C
+Get Middle Node 2 : C
+Get Middle Node 3 : C
+</code></pre>
+
+<h4 id="complete-program_6"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/print-middle-of-linked-list.cpp">Complete Program</a></h4>
+<h3 id="10-get-nth-node-from-end"><a name="user-content-10-get-nth-node-from-end" href="#10-get-nth-node-from-end" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>10. Get Nth Node from End</h3>
+<pre><code class="cpp">dataType getNthNodeFromLast(node *head, int n) {
+    node *temp = head;
+    int len;
+
+    for(len = 0; temp != NULL; len++)
+        temp = temp-&gt;next;
+
+    if(len &lt; n)
+        return '0';
+
+    temp = head;
+    for(int i = 0; i &lt; len - n; i++)
+        temp = temp-&gt;next;
+
+    return temp-&gt;data;
+}
+</code></pre>
+
+<h4 id="example_7"><a name="user-content-example_7" href="#example_7" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Example</h4>
 <pre><code class="cpp">
 node *head = NULL;
 insertAtStart(&amp;head, 'E');
@@ -1452,14 +1500,1487 @@ insertAtStart(&amp;head, 'C');
 insertAtStart(&amp;head, 'B');
 insertAtStart(&amp;head, 'A');
 printList(head);
-cout&lt;&lt;&quot;Get 2nd Node : &quot;&lt;&lt;getNthNode(head,1)&lt;&lt;endl;
+cout&lt;&lt;&quot;Get 2nd Node From Last : &quot;&lt;&lt;getNthNodeFromLast(head,2)&lt;&lt;endl;
 
 </code></pre>
 
-<h4 id="output_6"><a name="user-content-output_6" href="#output_6" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Output</h4>
+<h4 id="output_7"><a name="user-content-output_7" href="#output_7" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Output</h4>
 <pre><code class="cpp">A -&gt; B -&gt; C -&gt; D -&gt; E -&gt; NULL
-Get 2nd Node : B
+Get 2nd Node From Last : D
 
 </code></pre>
 
-<h4 id="complete-program_6"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/get-nth-node.cpp">Complete Program</a></h4></article></body></html>
+<h4 id="complete-program_7"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/get-nth-node-from-last.cpp">Complete Program</a></h4>
+<h3 id="11-delete-linked-list"><a name="user-content-11-delete-linked-list" href="#11-delete-linked-list" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>11. Delete Linked List</h3>
+<pre><code class="cpp">void deleteLinkedList(node **head) {
+    node *current = *head, *next;
+
+    while(current != NULL) {
+        next = current-&gt;next;
+        free(current);
+        current = next;
+    }
+
+    *head = NULL;
+}
+</code></pre>
+
+<h4 id="example_8"><a name="user-content-example_8" href="#example_8" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Example</h4>
+<pre><code class="cpp">
+node *head = NULL;
+insertAtStart(&amp;head, 'E');
+insertAtStart(&amp;head, 'D');
+deleteLinkedList(&amp;head);
+printList(head);
+
+</code></pre>
+
+<h4 id="output_8"><a name="user-content-output_8" href="#output_8" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Output</h4>
+<pre><code class="cpp">The linked list is empty
+</code></pre>
+
+<h4 id="complete-program_8"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/delete-linked-list.cpp">Complete Program</a></h4>
+<h3 id="12-frequency-of-a-node"><a name="user-content-12-frequency-of-a-node" href="#12-frequency-of-a-node" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>12. Frequency of a node</h3>
+<pre><code class="cpp">int frequencyOfNode(node *head, dataType key) {
+    int count = 0;
+    while(head != NULL) {
+        if(head-&gt;data == key)
+            count++;
+        head = head-&gt;next;
+    }
+    return count;
+}
+</code></pre>
+
+<h4 id="example_9"><a name="user-content-example_9" href="#example_9" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Example</h4>
+<pre><code class="cpp">
+node *head = NULL;
+insertAtStart(&amp;head, 'E');
+insertAtStart(&amp;head, 'D');
+insertAtStart(&amp;head, 'A');
+insertAtStart(&amp;head, 'F');
+insertAtStart(&amp;head, 'A');
+insertAtStart(&amp;head, 'C');
+insertAtStart(&amp;head, 'A');
+insertAtStart(&amp;head, 'B');
+insertAtStart(&amp;head, 'C');
+insertAtStart(&amp;head, 'A');
+insertAtStart(&amp;head, 'A');
+printList(head);
+cout&lt;&lt;&quot;Node 'A' appeared &quot;&lt;&lt;frequencyOfNode(head,'A')&lt;&lt;&quot; times&quot;&lt;&lt;endl;
+
+</code></pre>
+
+<h4 id="output_9"><a name="user-content-output_9" href="#output_9" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Output</h4>
+<pre><code class="cpp">A -&gt; A -&gt; C -&gt; B -&gt; A -&gt; C -&gt; A -&gt; F -&gt; A -&gt; D -&gt; E -&gt; NULL
+Node 'A' appeared 5 times
+</code></pre>
+
+<h4 id="complete-program_9"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/frequency-of-a-node.cpp">Complete Program</a></h4>
+<h3 id="13-reverse-linked-list"><a name="user-content-13-reverse-linked-list" href="#13-reverse-linked-list" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>13. Reverse linked List</h3>
+<h4 id="a-iterative_2"><a name="user-content-a-iterative_2" href="#a-iterative_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>A. Iterative</h4>
+<pre><code class="cpp">
+void iterativeReverse(node **head) {
+    node *prev = NULL, *current = *head, *next;
+
+    while(current != NULL) {
+        next = current-&gt;next;
+        current-&gt;next = prev;
+        prev = current;
+        current = next;
+    }
+
+    *head = prev;
+}
+
+</code></pre>
+
+<h4 id="b-recursive_2"><a name="user-content-b-recursive_2" href="#b-recursive_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>B. Recursive</h4>
+<pre><code class="cpp">
+void recursiveReverse(node **head) {
+    node *first, *rest;
+
+    if(*head == NULL)
+        return;
+
+    first = *head;
+    rest = first-&gt;next;
+
+    if(rest == NULL)
+        return;
+
+    recursiveReverse(&amp;rest);
+
+    first-&gt;next-&gt;next = first;
+    first-&gt;next = NULL;
+
+    *head = rest;
+}
+</code></pre>
+
+<h4 id="example_10"><a name="user-content-example_10" href="#example_10" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Example</h4>
+<pre><code class="cpp">
+node *head = NULL;
+insertAtStart(&amp;head, 'C');
+insertAtStart(&amp;head, 'B');
+insertAtStart(&amp;head, 'A');
+printList(head);
+iterativeReverse(&amp;head);
+printList(head);
+recursiveReverse(&amp;head);
+printList(head);
+</code></pre>
+
+<h4 id="output_10"><a name="user-content-output_10" href="#output_10" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Output</h4>
+<pre><code class="cpp">A -&gt; B -&gt; C -&gt; NULL
+C -&gt; B -&gt; A -&gt; NULL
+A -&gt; B -&gt; C -&gt; NULL
+</code></pre>
+
+<h4 id="complete-program_10"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/reverse-linked-list.cpp">Complete Program</a></h4>
+<h3 id="14-detect-loop"><a name="user-content-14-detect-loop" href="#14-detect-loop" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>14. Detect Loop</h3>
+<pre><code class="cpp">int detectLoop(node *head) {
+    node *slow_ptr = head, *fast_ptr = head;
+    while(fast_ptr != NULL &amp;&amp; fast_ptr-&gt;next != NULL) {
+        slow_ptr = slow_ptr-&gt;next;
+        fast_ptr = fast_ptr-&gt;next-&gt;next;
+        if(slow_ptr == fast_ptr)
+            return 1;
+    }
+    return 0;
+}
+</code></pre>
+
+<h4 id="example_11"><a name="user-content-example_11" href="#example_11" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Example</h4>
+<pre><code class="cpp">
+node *head = NULL;
+insertAtStart(&amp;head, 'C');
+insertAtStart(&amp;head, 'B');
+insertAtStart(&amp;head, 'A');
+head-&gt;next-&gt;next = head;
+int loop = detectLoop(head);
+if(loop)
+    cout&lt;&lt;&quot;Loop detected&quot;&lt;&lt;endl;
+else
+    cout&lt;&lt;&quot;Loop not detected&quot;&lt;&lt;endl;
+</code></pre>
+
+<h4 id="output_11"><a name="user-content-output_11" href="#output_11" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Output</h4>
+<pre><code class="cpp">Loop detected
+</code></pre>
+
+<h4 id="complete-program_11"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/find-loop-in-linked-list.cpp">Complete Program</a></h4>
+<h3 id="15-merge-2-sorted-linked-list"><a name="user-content-15-merge-2-sorted-linked-list" href="#15-merge-2-sorted-linked-list" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>15. Merge 2 sorted Linked List</h3>
+<h4 id="a-iterative_3"><a name="user-content-a-iterative_3" href="#a-iterative_3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>A. Iterative</h4>
+<pre><code class="cpp">
+node* iterativeMergeSort(node *x, node *y) {
+    node *head = NULL;
+    while(x != NULL &amp;&amp; y != NULL) {
+        if(x-&gt;data &lt;= y-&gt;data) {
+            insertAtEnd(&amp;head,x-&gt;data);
+            x = x-&gt;next;
+        }
+        else {
+            insertAtEnd(&amp;head,y-&gt;data);
+            y = y-&gt;next;
+        }
+    }
+    if(x == NULL) 
+        while(y != NULL) {
+            insertAtEnd(&amp;head,y-&gt;data);
+            y = y-&gt;next;    
+        }
+    else 
+        while(x != NULL) {
+            insertAtEnd(&amp;head,x-&gt;data);
+            x = x-&gt;next;    
+        }   
+
+    return head;
+}
+
+</code></pre>
+
+<h4 id="b-recursive_3"><a name="user-content-b-recursive_3" href="#b-recursive_3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>B. Recursive</h4>
+<pre><code class="cpp">
+node* recursiveMergeSort(node *x, node *y) {
+    node *head = NULL;
+
+    if(x == NULL) return y;
+    if(y == NULL) return x;
+
+    if(x-&gt;data &lt;= y-&gt;data) {
+        head = x;
+        head-&gt;next = recursiveMergeSort(head-&gt;next,y);
+    }
+    else {
+        head = y;
+        head-&gt;next = recursiveMergeSort(x,head-&gt;next);
+    }
+    return head;
+}
+
+</code></pre>
+
+<h4 id="example_12"><a name="user-content-example_12" href="#example_12" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Example</h4>
+<pre><code class="cpp">
+node *head1 = NULL;
+insertAtEnd(&amp;head1, 'A');
+insertAtEnd(&amp;head1, 'B');
+cout&lt;&lt;&quot;1st linked list is :&quot;&lt;&lt;endl;
+printList(head1);
+
+node *head2 = NULL;
+insertAtEnd(&amp;head2, 'E');
+insertAtEnd(&amp;head2, 'F');
+insertAtEnd(&amp;head2, 'G');
+cout&lt;&lt;&quot;2nd linked list is :&quot;&lt;&lt;endl;
+printList(head2);
+
+cout&lt;&lt;&quot;Iteratively Merged linked list is :&quot;&lt;&lt;endl;
+node *head3 = iterativeMergeSort(head1, head2);
+printList(head3);
+
+cout&lt;&lt;&quot;Recursively Merged linked list is :&quot;&lt;&lt;endl;
+head3 = recursiveMergeSort(head1, head2);
+printList(head3);
+</code></pre>
+
+<h4 id="output_12"><a name="user-content-output_12" href="#output_12" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Output</h4>
+<pre><code class="cpp">1st linked list is :
+A -&gt; B -&gt; NULL
+2nd linked list is :
+E -&gt; F -&gt; G -&gt; NULL
+Iteratively Merged linked list is :
+A -&gt; B -&gt; E -&gt; F -&gt; G -&gt; NULL
+Recursively Merged linked list is :
+A -&gt; B -&gt; E -&gt; F -&gt; G -&gt; NULL
+</code></pre>
+
+<h4 id="complete-program_12"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/merge-two-sorted-linked-list.cpp">Complete Program</a></h4>
+<h3 id="16-insert-node-in-a-sorted-list"><a name="user-content-16-insert-node-in-a-sorted-list" href="#16-insert-node-in-a-sorted-list" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>16. Insert Node in a Sorted List</h3>
+<pre><code class="cpp">void sortedInsert(node **head, dataType data) {
+    if(*head == NULL) return;
+    node *temp = *head;
+    node* new_node = (node*) malloc(sizeof(node));
+    new_node-&gt;data = data;
+    while(temp != NULL &amp;&amp; temp-&gt;next != NULL) {
+        if(temp-&gt;next-&gt;data &gt; data) {
+            new_node-&gt;next = temp-&gt;next;
+            temp-&gt;next = new_node;
+            break;
+        }
+        temp = temp-&gt;next;
+    }
+}
+</code></pre>
+
+<h4 id="example_13"><a name="user-content-example_13" href="#example_13" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Example</h4>
+<pre><code class="cpp">
+node *head = NULL;
+insertAtStart(&amp;head, 'F');
+insertAtStart(&amp;head, 'E');
+insertAtStart(&amp;head, 'C');
+insertAtStart(&amp;head, 'B');
+insertAtStart(&amp;head, 'A');
+printList(head);
+sortedInsert(&amp;head, 'D');
+printList(head);
+</code></pre>
+
+<h4 id="output_13"><a name="user-content-output_13" href="#output_13" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Output</h4>
+<pre><code class="cpp">A -&gt; B -&gt; C -&gt; E -&gt; F -&gt; NULL
+A -&gt; B -&gt; C -&gt; D -&gt; E -&gt; F -&gt; NULL
+</code></pre>
+
+<h4 id="complete-program_13"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/insert-node-in-sorted-list.cpp">Complete Program</a></h4>
+<h3 id="17-delete-node-given-only-pointer-to-node"><a name="user-content-17-delete-node-given-only-pointer-to-node" href="#17-delete-node-given-only-pointer-to-node" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>17. Delete Node given only Pointer to Node</h3>
+<pre><code class="cpp">void deleteNodeOnlyGivenPointerToNode(node* ptr) {
+    node* temp = ptr-&gt;next;
+    ptr-&gt;data = temp-&gt;data;
+    ptr-&gt;next = temp-&gt;next;
+    free(temp);
+}
+</code></pre>
+
+<h4 id="example_14"><a name="user-content-example_14" href="#example_14" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Example</h4>
+<pre><code class="cpp">
+node *head = NULL;
+insertAtStart(&amp;head, 'F');
+insertAtStart(&amp;head, 'E');
+insertAtStart(&amp;head, 'C');
+insertAtStart(&amp;head, 'B');
+insertAtStart(&amp;head, 'A');
+printList(head);
+deleteNodeOnlyGivenPointerToNode(head);
+printList(head);
+</code></pre>
+
+<h4 id="output_14"><a name="user-content-output_14" href="#output_14" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Output</h4>
+<pre><code class="cpp">A -&gt; B -&gt; C -&gt; E -&gt; F -&gt; NULL
+B -&gt; C -&gt; E -&gt; F -&gt; NULL
+</code></pre>
+
+<h4 id="complete-program_14"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/delete-node-only-given-pointer-to-node.cpp">Complete Program</a></h4>
+<p class="warning">
+    This solution doesn’t work if the node to be deleted is the last node of the list.
+</p>
+
+<h3 id="18-palindrome"><a name="user-content-18-palindrome" href="#18-palindrome" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>18. Palindrome</h3>
+<pre><code class="cpp">node* cloneLinkedListInReverse(node *temp) {
+    node *reverse = NULL;
+    while(temp != NULL) {
+        insertAtStart(&amp;reverse,temp-&gt;data);
+        temp = temp-&gt;next;
+    }
+    return reverse;
+}
+
+int isPalindrome(node *head1,node *head2) {
+    while(head1 != NULL &amp;&amp; head2 != NULL)
+        if(head1-&gt;data != head2-&gt;data)
+            return 0;
+        else {
+            head1 = head1-&gt;next;
+            head2 = head2-&gt;next;
+        }
+    return 1;
+}
+</code></pre>
+
+<h4 id="example_15"><a name="user-content-example_15" href="#example_15" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Example</h4>
+<pre><code class="cpp">
+node *head1 = NULL;
+insertAtStart(&amp;head1, 'R');
+insertAtStart(&amp;head1, 'A');
+insertAtStart(&amp;head1, 'D');
+insertAtStart(&amp;head1, 'A');
+insertAtStart(&amp;head1, 'R');
+
+cout&lt;&lt;&quot;1st Linked List : &quot;&lt;&lt;endl;
+printList(head1);
+
+node *head2 = cloneLinkedListInReverse(head1);
+
+cout&lt;&lt;&quot;2nd Linked List : &quot;&lt;&lt;endl;
+printList(head2);
+
+int palindrome = isPalindrome(head1,head2);
+
+if(palindrome)
+    cout&lt;&lt;&quot;Palindrome&quot;&lt;&lt;endl;
+else cout&lt;&lt;&quot;Not Palindrome&quot;&lt;&lt;endl;
+</code></pre>
+
+<h4 id="output_15"><a name="user-content-output_15" href="#output_15" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Output</h4>
+<pre><code class="cpp">1st Linked List : 
+R -&gt; A -&gt; D -&gt; A -&gt; R -&gt; NULL
+2nd Linked List : 
+R -&gt; A -&gt; D -&gt; A -&gt; R -&gt; NULL
+Palindrome
+</code></pre>
+
+<h4 id="complete-program_15"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/check-if-linked-list-is-palindrome.cpp">Complete Program</a></h4>
+<h3 id="19-recursive-print-list"><a name="user-content-19-recursive-print-list" href="#19-recursive-print-list" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>19. Recursive Print List</h3>
+<pre><code class="cpp">
+void recursiveReversePrintList(node *head) {
+    if(head == NULL) return;
+    recursiveReversePrintList(head-&gt;next);
+    cout&lt;&lt;head-&gt;data&lt;&lt;&quot; -&gt;&quot;;
+}
+</code></pre>
+
+<h4 id="example_16"><a name="user-content-example_16" href="#example_16" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Example</h4>
+<pre><code class="cpp">
+node *head = NULL;
+insertAtStart(&amp;head, 'C');
+insertAtStart(&amp;head, 'B');
+insertAtStart(&amp;head, 'A');
+printList(head);
+recursiveReversePrintList(head);
+cout&lt;&lt;&quot;NULL&quot;;
+</code></pre>
+
+<h4 id="output_16"><a name="user-content-output_16" href="#output_16" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Output</h4>
+<pre><code class="cpp">A -&gt; B -&gt; C -&gt; NULL
+C -&gt; B -&gt; A -&gt; NULL
+</code></pre>
+
+<h4 id="complete-program_16"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/print-recursively-reverse-linked-list.cpp">Complete Program</a></h4>
+<h3 id="20-remove-duplicates-from-sorted-list"><a name="user-content-20-remove-duplicates-from-sorted-list" href="#20-remove-duplicates-from-sorted-list" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>20. Remove Duplicates from sorted list</h3>
+<pre><code class="cpp">
+void removeDuplicatesFromSortedList(node *head) {
+    if(head == NULL)
+        return;
+
+    node *next_ptr;
+
+    while(head-&gt;next != NULL)
+        if(head-&gt;data == head-&gt;next-&gt;data) {
+            next_ptr = head-&gt;next-&gt;next;
+            free(head-&gt;next);
+            head-&gt;next = next_ptr;
+        }
+        else
+            head = head-&gt;next;
+}
+</code></pre>
+
+<h4 id="example_17"><a name="user-content-example_17" href="#example_17" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Example</h4>
+<pre><code class="cpp">
+node *head = NULL;
+insertAtStart(&amp;head, 'E');
+insertAtStart(&amp;head, 'D');
+insertAtStart(&amp;head, 'D');
+insertAtStart(&amp;head, 'C');
+insertAtStart(&amp;head, 'B');
+insertAtStart(&amp;head, 'B');
+insertAtStart(&amp;head, 'A');
+insertAtStart(&amp;head, 'A');
+insertAtStart(&amp;head, 'A');
+printList(head);
+removeDuplicatesFromSortedList(head);
+printList(head);
+</code></pre>
+
+<h4 id="output_17"><a name="user-content-output_17" href="#output_17" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Output</h4>
+<pre><code class="cpp">A -&gt; A -&gt; A -&gt; B -&gt; B -&gt; C -&gt; D -&gt; D -&gt; E -&gt; NULL
+A -&gt; B -&gt; C -&gt; D -&gt; E -&gt; NULL
+</code></pre>
+
+<h4 id="complete-program_17"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/remove-duplicates-from-sorted-linked-list.cpp">Complete Program</a></h4>
+<h3 id="21-remove-duplicates-from-unsorted-list"><a name="user-content-21-remove-duplicates-from-unsorted-list" href="#21-remove-duplicates-from-unsorted-list" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>21. Remove Duplicates from unsorted list</h3>
+<h4 id="a-iterative_4"><a name="user-content-a-iterative_4" href="#a-iterative_4" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>A. Iterative</h4>
+<pre><code class="cpp">
+void removeDuplicatesFromUnsortedList(node *head) {
+    if(head == NULL)
+        return;
+
+    node *fixed = head, *moving;
+    while(fixed != NULL &amp;&amp; fixed-&gt;next != NULL) {
+        moving = fixed;
+        while(moving-&gt;next != NULL) {
+            if(fixed-&gt;data == moving-&gt;next-&gt;data) {
+                node *next_ptr = moving-&gt;next;
+                moving-&gt;next = next_ptr-&gt;next;
+                free(next_ptr);
+            }
+            else moving = moving-&gt;next;
+        }
+        fixed = fixed-&gt;next;
+    }
+}
+</code></pre>
+
+<h4 id="b-hashing"><a name="user-content-b-hashing" href="#b-hashing" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>B. Hashing</h4>
+<pre><code class="cpp">
+void removeDuplicatesFromUnsortedListUsingHashing(node *head) {
+    unordered_set&lt;int&gt; seen;
+    node *current = head, *prev = NULL;
+    while(current != NULL) {
+        if(seen.find(current-&gt;data) != seen.end()) {
+            prev-&gt;next = current-&gt;next;
+            free(current);
+        }
+        else {
+            seen.insert(current-&gt;data);
+            prev = current;
+        }
+        current = prev-&gt;next;
+    }
+}
+</code></pre>
+
+<h4 id="example_18"><a name="user-content-example_18" href="#example_18" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Example</h4>
+<pre><code class="cpp">
+node *head = NULL;
+insertAtStart(&amp;head, 'C');
+insertAtStart(&amp;head, 'A');
+insertAtStart(&amp;head, 'B');
+insertAtStart(&amp;head, 'A');
+insertAtStart(&amp;head, 'A');
+printList(head);
+removeDuplicatesFromUnsortedList(head);
+printList(head);
+insertAtStart(&amp;head, 'C');
+insertAtStart(&amp;head, 'A');
+insertAtStart(&amp;head, 'B');
+insertAtStart(&amp;head, 'A');
+insertAtStart(&amp;head, 'A');
+removeDuplicatesFromUnsortedListUsingHashing(head);
+printList(head);
+</code></pre>
+
+<h4 id="output_18"><a name="user-content-output_18" href="#output_18" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Output</h4>
+<pre><code class="cpp">A -&gt; A -&gt; B -&gt; A -&gt; C -&gt; NULL
+A -&gt; B -&gt; C -&gt; NULL
+A -&gt; B -&gt; C -&gt; NULL
+</code></pre>
+
+<h4 id="complete-program_18"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/remove-duplicates-from-unsorted-linked-list.cpp">Complete Program</a></h4>
+<h3 id="22-swap-pairs"><a name="user-content-22-swap-pairs" href="#22-swap-pairs" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>22. Swap Pairs</h3>
+<pre><code class="cpp">
+void swap(dataType *a, dataType *b) {
+    dataType temp = *a;
+    *a = *b;
+    *b = temp;
+}
+</code></pre>
+
+<h4 id="a-iterative_5"><a name="user-content-a-iterative_5" href="#a-iterative_5" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>A. Iterative</h4>
+<pre><code class="cpp">
+void swapPairsIterative(node *head) {
+    if(head == NULL) return;
+
+    while(head != NULL &amp;&amp; head-&gt;next != NULL) {
+        swap(&amp;(head-&gt;data),&amp;(head-&gt;next-&gt;data));
+        head = head-&gt;next-&gt;next;
+    }
+}
+</code></pre>
+
+<h4 id="b-recursive_4"><a name="user-content-b-recursive_4" href="#b-recursive_4" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>B. Recursive</h4>
+<pre><code class="cpp">
+void swapPairsRecursive(node *head) {
+    if(head == NULL || head-&gt;next == NULL) return;
+
+    swap(&amp;(head-&gt;data),&amp;(head-&gt;next-&gt;data));
+    swapPairsRecursive(head-&gt;next-&gt;next);
+}
+</code></pre>
+
+<h4 id="example_19"><a name="user-content-example_19" href="#example_19" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Example</h4>
+<pre><code class="cpp">
+node *head = NULL;
+insertAtStart(&amp;head, 'F');
+insertAtStart(&amp;head, 'E');
+insertAtStart(&amp;head, 'C');
+insertAtStart(&amp;head, 'B');
+insertAtStart(&amp;head, 'A');
+printList(head);
+swapPairsIterative(head);
+printList(head);
+swapPairsRecursive(head);
+printList(head);
+</code></pre>
+
+<h4 id="output_19"><a name="user-content-output_19" href="#output_19" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Output</h4>
+<pre><code class="cpp">A -&gt; B -&gt; C -&gt; E -&gt; F -&gt; NULL
+B -&gt; A -&gt; E -&gt; C -&gt; F -&gt; NULL
+A -&gt; B -&gt; C -&gt; E -&gt; F -&gt; NULL
+</code></pre>
+
+<h4 id="complete-program_19"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/swap-data-of-adjacent-pairs.cpp">Complete Program</a></h4>
+<h3 id="23-move-last-to-first"><a name="user-content-23-move-last-to-first" href="#23-move-last-to-first" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>23. Move Last to First</h3>
+<pre><code class="cpp">
+void moveLastToFirst(node **head) {
+    if(*head == NULL) return;
+
+    node *last = *head, *prev = NULL;
+
+    while(last-&gt;next != NULL) {
+        prev = last;
+        last = last-&gt;next;
+    }
+    prev-&gt;next = NULL;
+    last-&gt;next = *head;
+    *head = last;
+}
+</code></pre>
+
+<h4 id="example_20"><a name="user-content-example_20" href="#example_20" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Example</h4>
+<pre><code class="cpp">
+node *head = NULL;
+insertAtStart(&amp;head, 'F');
+insertAtStart(&amp;head, 'E');
+insertAtStart(&amp;head, 'C');
+insertAtStart(&amp;head, 'B');
+insertAtStart(&amp;head, 'A');
+printList(head);
+moveLastToFirst(&amp;head);
+printList(head);
+</code></pre>
+
+<h4 id="output_20"><a name="user-content-output_20" href="#output_20" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Output</h4>
+<pre><code class="cpp">A -&gt; B -&gt; C -&gt; E -&gt; F -&gt; NULL
+F -&gt; A -&gt; B -&gt; C -&gt; E -&gt; NULL
+</code></pre>
+
+<h4 id="complete-program_20"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/move-last-element-to-first.cpp">Complete Program</a></h4>
+<h3 id="24-intersection-of-2-sorted-lists"><a name="user-content-24-intersection-of-2-sorted-lists" href="#24-intersection-of-2-sorted-lists" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>24. Intersection of 2 Sorted Lists</h3>
+<h4 id="a-dummy-head-node"><a name="user-content-a-dummy-head-node" href="#a-dummy-head-node" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>A. Dummy Head Node</h4>
+<pre><code class="cpp">
+node* intersectionOfTwoSortedListsUsingDummyNode(node *head1, node *head2) {
+    node head, *tail = &amp;head;
+    head.next = NULL;
+    while(head1 != NULL &amp;&amp; head2 != NULL) {
+        if(head1-&gt;data == head2-&gt;data) {
+            insertAtEnd(&amp;tail-&gt;next,head1-&gt;data);
+            tail = tail-&gt;next;
+            head1 = head1-&gt;next;
+            head2 = head2-&gt;next;
+        }
+        else if(head1-&gt;data &lt; head2-&gt;data)
+                    head1 = head1-&gt;next;
+                else head2 = head2-&gt;next;
+    }
+    return head.next;
+}
+</code></pre>
+
+<h4 id="b-pointer-of-pointer"><a name="user-content-b-pointer-of-pointer" href="#b-pointer-of-pointer" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>B. Pointer of Pointer</h4>
+<pre><code class="cpp">
+node* intersectionOfTwoSortedListsUsingPointerOfPointer(node *head1, node *head2) {
+    node *head = NULL, **tail = &amp;head;
+    while(head1 != NULL &amp;&amp; head2 != NULL) {
+        if(head1-&gt;data == head2-&gt;data) {
+            insertAtEnd(tail,head1-&gt;data);
+            tail = &amp;((*tail)-&gt;next);
+            head1 = head1-&gt;next;
+            head2 = head2-&gt;next;
+        }
+        else if(head1-&gt;data &lt; head2-&gt;data)
+                    head1 = head1-&gt;next;
+                else head2 = head2-&gt;next;
+    }
+    return head;
+}
+</code></pre>
+
+<h4 id="c-recursion"><a name="user-content-c-recursion" href="#c-recursion" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>C. Recursion</h4>
+<pre><code class="cpp">
+node* intersectionOfTwoSortedListsUsingRecursion(node *head1, node *head2) {
+    if(head1 == NULL || head2 == NULL) return NULL;
+
+    if(head1-&gt;data &lt; head2-&gt;data)
+        return intersectionOfTwoSortedListsUsingRecursion(head1-&gt;next, head2);
+
+    if(head1-&gt;data &gt; head2-&gt;data)
+        return intersectionOfTwoSortedListsUsingRecursion(head1, head2-&gt;next);
+
+    node *new_node = (node *)malloc(sizeof(node));
+    new_node-&gt;data = head1-&gt;data;
+
+    new_node-&gt;next = intersectionOfTwoSortedListsUsingRecursion(head1-&gt;next, head2-&gt;next);
+    return new_node;
+}
+</code></pre>
+
+<h4 id="example_21"><a name="user-content-example_21" href="#example_21" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Example</h4>
+<pre><code class="cpp">
+node *head1 = NULL;
+insertAtEnd(&amp;head1, 'A');
+insertAtEnd(&amp;head1, 'B');
+insertAtEnd(&amp;head1, 'C');
+insertAtEnd(&amp;head1, 'D');
+insertAtEnd(&amp;head1, 'E');
+cout&lt;&lt;&quot;1st linked list : &quot;&lt;&lt;endl;
+printList(head1);
+node *head2 = NULL;
+insertAtEnd(&amp;head2, 'C');
+insertAtEnd(&amp;head2, 'D');
+insertAtEnd(&amp;head2, 'E');
+cout&lt;&lt;&quot;2nd linked list : &quot;&lt;&lt;endl;
+printList(head2);
+node *head3 = intersectionOfTwoSortedListsUsingDummyNode(head1,head2);
+cout&lt;&lt;&quot;Intersection using Dummy Node : &quot;&lt;&lt;endl;
+printList(head3);
+node *head4 = intersectionOfTwoSortedListsUsingPointerOfPointer(head1,head2);
+cout&lt;&lt;&quot;Intersection using Pointer of Pointer : &quot;&lt;&lt;endl;
+printList(head4);
+node *head5 = intersectionOfTwoSortedListsUsingRecursion(head1,head2);
+cout&lt;&lt;&quot;Intersection using Recursion : &quot;&lt;&lt;endl;
+printList(head5);
+</code></pre>
+
+<h4 id="output_21"><a name="user-content-output_21" href="#output_21" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Output</h4>
+<pre><code class="cpp">1st linked list : 
+A -&gt; B -&gt; C -&gt; D -&gt; E -&gt; NULL
+2nd linked list : 
+C -&gt; D -&gt; E -&gt; NULL
+Intersection using Dummy Node : 
+C -&gt; D -&gt; E -&gt; NULL
+Intersection using Pointer of Pointer : 
+C -&gt; D -&gt; E -&gt; NULL
+Intersection using Recursion : 
+C -&gt; D -&gt; E -&gt; NULL
+</code></pre>
+
+<h4 id="complete-program_21"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/intersection-of-two-sorted-lists.cpp">Complete Program</a></h4>
+<h3 id="25-delete-alternate-nodes"><a name="user-content-25-delete-alternate-nodes" href="#25-delete-alternate-nodes" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>25. Delete Alternate Nodes</h3>
+<h4 id="a-iterative_6"><a name="user-content-a-iterative_6" href="#a-iterative_6" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>A. Iterative</h4>
+<pre><code class="cpp">
+void deleteAlternateNodesIterative(node *head) {
+    node *current = head, *next_ptr;
+
+    while(current != NULL &amp;&amp; current-&gt;next != NULL) {
+        next_ptr = current-&gt;next;
+        current-&gt;next = next_ptr-&gt;next;
+        free(next_ptr);
+        current = current-&gt;next;
+    }
+}
+</code></pre>
+
+<h4 id="b-recursive_5"><a name="user-content-b-recursive_5" href="#b-recursive_5" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>B. Recursive</h4>
+<pre><code class="cpp">
+void deleteAlternateNodesRecursive(node *head) {
+    if(head == NULL || head-&gt;next == NULL) return;
+
+    node *next_ptr = head-&gt;next;
+    head-&gt;next = next_ptr-&gt;next;
+    free(next_ptr);
+    deleteAlternateNodesRecursive(head-&gt;next);
+}
+</code></pre>
+
+<h4 id="example_22"><a name="user-content-example_22" href="#example_22" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Example</h4>
+<pre><code class="cpp">
+node *head = NULL;
+insertAtStart(&amp;head, 'E');
+insertAtStart(&amp;head, 'D');
+insertAtStart(&amp;head, 'C');
+insertAtStart(&amp;head, 'B');
+insertAtStart(&amp;head, 'A');
+printList(head);
+cout&lt;&lt;&quot;Delete Alternate Nodes Iteratively : &quot;&lt;&lt;endl;
+deleteAlternateNodesIterative(head);
+printList(head);
+cout&lt;&lt;&quot;Delete Alternate Nodes Recursively : &quot;&lt;&lt;endl;
+deleteAlternateNodesRecursive(head);
+printList(head);
+</code></pre>
+
+<h4 id="output_22"><a name="user-content-output_22" href="#output_22" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Output</h4>
+<pre><code class="cpp">A -&gt; B -&gt; C -&gt; D -&gt; E -&gt; NULL
+Delete Alternate Nodes Iteratively : 
+A -&gt; C -&gt; E -&gt; NULL
+Delete Alternate Nodes Recursively : 
+A -&gt; E -&gt; NULL
+</code></pre>
+
+<h4 id="complete-program_22"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/delete-alternate-node-of-linked-list.cpp">Complete Program</a></h4>
+<h3 id="26-splitting-alternate-nodes"><a name="user-content-26-splitting-alternate-nodes" href="#26-splitting-alternate-nodes" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>26. Splitting Alternate Nodes</h3>
+<pre><code class="cpp">
+void alternateSplitting(node *head, node **x, node **y) {
+    if(head == NULL) return;
+
+    for(int count = 1; head != NULL; count++) {
+        if(count &amp; 1)
+            insertAtEnd(x, head-&gt;data);
+        else insertAtEnd(y, head-&gt;data);
+        head = head-&gt;next;
+    }
+}
+</code></pre>
+
+<h4 id="example_23"><a name="user-content-example_23" href="#example_23" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Example</h4>
+<pre><code class="cpp">
+node *head = NULL;
+insertAtEnd(&amp;head, 'A');
+insertAtEnd(&amp;head, 'B');
+insertAtEnd(&amp;head, 'C');
+insertAtEnd(&amp;head, 'D');
+insertAtEnd(&amp;head, 'E');
+printList(head);
+cout&lt;&lt;&quot;Alternate Splitting of Linked List : &quot;&lt;&lt;endl;
+node *x = NULL, *y = NULL;
+alternateSplitting(head, &amp;x, &amp;y);
+printList(x);
+printList(y);
+</code></pre>
+
+<h4 id="output_23"><a name="user-content-output_23" href="#output_23" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Output</h4>
+<pre><code class="cpp">A -&gt; B -&gt; C -&gt; D -&gt; E -&gt; NULL
+Alternate Splitting of Linked List : 
+A -&gt; C -&gt; E -&gt; NULL
+B -&gt; D -&gt; NULL
+</code></pre>
+
+<h4 id="complete-program_23"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/alternate-splitting-of-linked-list.cpp">Complete Program</a></h4>
+<h3 id="27-identical-linked-lists"><a name="user-content-27-identical-linked-lists" href="#27-identical-linked-lists" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>27. Identical Linked Lists</h3>
+<h4 id="a-iterative_7"><a name="user-content-a-iterative_7" href="#a-iterative_7" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>A. Iterative</h4>
+<pre><code class="cpp">
+bool identicalLinkedListsIterative(node *x, node *y) {
+    while(x != NULL &amp;&amp; y != NULL) {
+        if(x-&gt;data != y-&gt;data)
+            return false;
+        x = x-&gt;next;
+        y = y-&gt;next;
+    }
+
+    return x == NULL &amp;&amp; y == NULL;
+}
+</code></pre>
+
+<h4 id="b-recursive_6"><a name="user-content-b-recursive_6" href="#b-recursive_6" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>B. Recursive</h4>
+<pre><code class="cpp">
+bool identicalLinkedListsRecursive(node *x, node *y) {
+    if(x == NULL &amp;&amp; y == NULL) return true;
+
+    if(x != NULL &amp;&amp; y != NULL) 
+        return (x-&gt;data == y-&gt;data) &amp;&amp; identicalLinkedListsRecursive(x-&gt;next,y-&gt;next);
+    return false;
+}
+</code></pre>
+
+<h4 id="example_24"><a name="user-content-example_24" href="#example_24" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Example</h4>
+<pre><code class="cpp">
+node *x = NULL;
+insertAtStart(&amp;x, 'A');
+insertAtStart(&amp;x, 'B');
+insertAtStart(&amp;x, 'C');
+insertAtStart(&amp;x, 'D');
+insertAtStart(&amp;x, 'E');
+cout&lt;&lt;&quot;Linked List 1 : &quot;&lt;&lt;endl;
+printList(x);
+
+node *y = NULL;
+insertAtStart(&amp;y, 'A');
+insertAtStart(&amp;y, 'B');
+insertAtStart(&amp;y, 'C');
+insertAtStart(&amp;y, 'D');
+insertAtStart(&amp;y, 'E');
+cout&lt;&lt;&quot;Linked List 2 : &quot;&lt;&lt;endl;
+printList(y);
+
+cout&lt;&lt;&quot;Iterative Method - &quot;&lt;&lt;endl;
+if(identicalLinkedListsIterative(x,y))
+    cout&lt;&lt;&quot;Linked Lists are Identical&quot;&lt;&lt;endl;
+else cout&lt;&lt;&quot;Linked Lists are Not Identical&quot;&lt;&lt;endl;
+
+cout&lt;&lt;&quot;Recursive Method - &quot;&lt;&lt;endl;
+if(identicalLinkedListsRecursive(x,y))
+    cout&lt;&lt;&quot;Linked Lists are Identical&quot;&lt;&lt;endl;
+else cout&lt;&lt;&quot;Linked Lists are Not Identical&quot;&lt;&lt;endl;
+</code></pre>
+
+<h4 id="output_24"><a name="user-content-output_24" href="#output_24" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Output</h4>
+<pre><code class="cpp">Linked List 1 : 
+E -&gt; D -&gt; C -&gt; B -&gt; A -&gt; NULL
+Linked List 2 : 
+E -&gt; D -&gt; C -&gt; B -&gt; A -&gt; NULL
+Iterative Method - 
+Linked Lists are Identical
+Recursive Method - 
+Linked Lists are Identical
+</code></pre>
+
+<h4 id="complete-program_24"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/identical-linked-lists.cpp">Complete Program</a></h4>
+<h3 id="28-merge-sort"><a name="user-content-28-merge-sort" href="#28-merge-sort" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>28. Merge Sort</h3>
+<pre><code class="cpp">
+void FrontBackSplit(node *head, node **x, node **y) {   
+    if(head == NULL || head-&gt;next == NULL) {
+        *x = head;
+        *y = NULL;
+        return;
+    }
+
+    node *slow = head, *fast = head-&gt;next;
+
+    while(fast != NULL) {
+        fast = fast-&gt;next;
+        if(fast != NULL) {
+            slow = slow-&gt;next;
+            fast = fast-&gt;next;
+        }
+    }
+
+    *x = head;
+    *y = slow-&gt;next;
+    slow-&gt;next = NULL;
+}
+
+void mergeSort(node **headRef) {
+    node *head = *headRef;
+
+    if(head == NULL || head-&gt;next == NULL) return;
+
+    node *x, *y;
+    FrontBackSplit(head,&amp;x,&amp;y);
+    mergeSort(&amp;x);
+    mergeSort(&amp;y);
+    *headRef = iterativeMergeSort(x,y);
+}
+
+</code></pre>
+
+<h4 id="example_25"><a name="user-content-example_25" href="#example_25" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Example</h4>
+<pre><code class="cpp">
+node *head = NULL;
+insertAtEnd(&amp;head, 'F');
+insertAtEnd(&amp;head, 'E');
+insertAtEnd(&amp;head, 'C');
+insertAtEnd(&amp;head, 'B');
+insertAtEnd(&amp;head, 'A');
+printList(head);
+mergeSort(&amp;head);
+printList(head);
+</code></pre>
+
+<h4 id="output_25"><a name="user-content-output_25" href="#output_25" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Output</h4>
+<pre><code class="cpp">F -&gt; E -&gt; C -&gt; B -&gt; A -&gt; NULL
+A -&gt; B -&gt; C -&gt; E -&gt; F -&gt; NULL
+</code></pre>
+
+<h4 id="complete-program_25"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/merge-sort-for-linked-lists.cpp">Complete Program</a></h4>
+<h3 id="29-reverse-a-list-in-groups-of-given-size"><a name="user-content-29-reverse-a-list-in-groups-of-given-size" href="#29-reverse-a-list-in-groups-of-given-size" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>29. Reverse a list in Groups of Given Size</h3>
+<pre><code class="cpp">
+node* reverseInGroups(node *head, int n) {
+    node *current = head, *prev = NULL, *next = NULL;
+    for(int i = 0; current != NULL &amp;&amp; i &lt; n; i++) {
+        next = current-&gt;next;
+        current-&gt;next = prev;
+        prev = current;
+        current = next;
+    }
+
+    if(next != NULL)
+        head-&gt;next = reverseInGroups(next,n);
+
+    return prev;
+}
+
+</code></pre>
+
+<h4 id="example_26"><a name="user-content-example_26" href="#example_26" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Example</h4>
+<pre><code class="cpp">
+node *head = NULL;
+insertAtStart(&amp;head, 'B');
+insertAtStart(&amp;head, 'A');
+insertAtStart(&amp;head, 'C');
+insertAtStart(&amp;head, 'D');
+insertAtStart(&amp;head, 'E');
+printList(head);
+printList(reverseInGroups(head,3));
+</code></pre>
+
+<h4 id="output_26"><a name="user-content-output_26" href="#output_26" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Output</h4>
+<pre><code class="cpp">
+E -&gt; D -&gt; C -&gt; A -&gt; B -&gt; NULL
+C -&gt; D -&gt; E -&gt; B -&gt; A -&gt; NULL
+</code></pre>
+
+<h4 id="complete-program_26"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/reverse-linked-list-in-groups-of-given-size.cpp">Complete Program</a></h4>
+<h3 id="30-alternate-reverse-a-list-in-groups-of-given-size"><a name="user-content-30-alternate-reverse-a-list-in-groups-of-given-size" href="#30-alternate-reverse-a-list-in-groups-of-given-size" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>30. Alternate Reverse a list in Groups of Given Size</h3>
+<pre><code class="cpp">
+node* alternateReverseInGroups(node *head, int n) {
+    node *current = head, *prev = NULL, *next = NULL;
+    for(int i = 0; current != NULL &amp;&amp; i &lt; n; i++) {
+        next = current-&gt;next;
+        current-&gt;next = prev;
+        prev = current;
+        current = next;
+    }
+
+    if(head != NULL)
+        head-&gt;next = current;
+
+    for(int i = 0; current != NULL &amp;&amp; i &lt; n-1; i++)
+        current = current-&gt;next;
+
+    if(current != NULL)
+        current-&gt;next = alternateReverseInGroups(current-&gt;next,n);
+
+    return prev;
+}
+</code></pre>
+
+<h4 id="example_27"><a name="user-content-example_27" href="#example_27" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Example</h4>
+<pre><code class="cpp">
+node *head = NULL;
+insertAtStart(&amp;head, 'J');
+insertAtStart(&amp;head, 'I');
+insertAtStart(&amp;head, 'H');
+insertAtStart(&amp;head, 'G');
+insertAtStart(&amp;head, 'F');
+insertAtStart(&amp;head, 'E');
+insertAtStart(&amp;head, 'D');
+insertAtStart(&amp;head, 'C');
+insertAtStart(&amp;head, 'B');
+insertAtStart(&amp;head, 'A');
+printList(head);
+printList(alternateReverseInGroups(head,3));
+</code></pre>
+
+<h4 id="output_27"><a name="user-content-output_27" href="#output_27" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Output</h4>
+<pre><code class="cpp">A -&gt; B -&gt; C -&gt; D -&gt; E -&gt; F -&gt; G -&gt; H -&gt; I -&gt; J -&gt; NULL
+C -&gt; B -&gt; A -&gt; D -&gt; E -&gt; F -&gt; I -&gt; H -&gt; G -&gt; J -&gt; NULL
+</code></pre>
+
+<h4 id="complete-program_27"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/alternate-reverse-linked-list-in-groups-of-given-size.cpp">Complete Program</a></h4>
+<h3 id="31-delete-nodes-having-greater-value-on-right-side"><a name="user-content-31-delete-nodes-having-greater-value-on-right-side" href="#31-delete-nodes-having-greater-value-on-right-side" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>31. Delete Nodes Having Greater Value on Right Side</h3>
+<pre><code class="cpp">
+void delNodes(node *head) {
+    node *current = head;
+    while(current != NULL &amp;&amp; current-&gt;next != NULL)
+        if(current-&gt;next-&gt;data &lt; current-&gt;data) {
+            node *temp = current-&gt;next;
+            current-&gt;next = temp-&gt;next;
+            free(temp);
+        }
+        else current = current-&gt;next;
+}
+
+void deleteNodesHavingGreaterValueOnRightSide(node **head) {
+    if(*head == NULL) return;
+
+    iterativeReverse(head);
+    delNodes(*head);
+    iterativeReverse(head);
+}
+</code></pre>
+
+<h4 id="example_28"><a name="user-content-example_28" href="#example_28" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Example</h4>
+<pre><code class="cpp">
+node *head = NULL;
+insertAtStart(&amp;head, 'B');
+insertAtStart(&amp;head, 'A');
+insertAtStart(&amp;head, 'D');
+insertAtStart(&amp;head, 'C');
+insertAtStart(&amp;head, 'E');
+printList(head);
+deleteNodesHavingGreaterValueOnRightSide(&amp;head);
+printList(head);
+</code></pre>
+
+<h4 id="output_28"><a name="user-content-output_28" href="#output_28" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Output</h4>
+<pre><code class="cpp">E -&gt; C -&gt; D -&gt; A -&gt; B -&gt; NULL
+E -&gt; D -&gt; B -&gt; NULL
+</code></pre>
+
+<h4 id="complete-program_28"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/delete-nodes-which-have-greater-value-on-right-side.cpp">Complete Program</a></h4>
+<h3 id="32-segregate-even-odd-nodes"><a name="user-content-32-segregate-even-odd-nodes" href="#32-segregate-even-odd-nodes" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>32. Segregate Even &amp; Odd Nodes</h3>
+<pre><code class="cpp">
+void segregateEvenAndOdd(node **head) {
+    if(*head == NULL) return;
+
+    node *temp = *head, *even = NULL, *odd = NULL;
+    while(temp != NULL) {
+        if(temp-&gt;data &amp; 1)
+            insertAtEnd(&amp;odd,temp-&gt;data);
+        else insertAtEnd(&amp;even,temp-&gt;data);
+        temp = temp-&gt;next;
+    }
+
+    if(even == NULL) {
+        *head = odd;
+        return;
+    }
+
+    temp = even;
+    while(temp-&gt;next != NULL)
+        temp = temp-&gt;next;
+
+    temp-&gt;next = odd;
+    *head = even;   
+}
+</code></pre>
+
+<h4 id="example_29"><a name="user-content-example_29" href="#example_29" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Example</h4>
+<pre><code class="cpp">
+node *head = NULL;
+insertAtEnd(&amp;head, 'B');
+insertAtEnd(&amp;head, 'A');
+insertAtEnd(&amp;head, 'C');
+insertAtEnd(&amp;head, 'D');
+insertAtEnd(&amp;head, 'E');
+printList(head);
+segregateEvenAndOdd(&amp;head);
+printList(head);
+</code></pre>
+
+<h4 id="output_29"><a name="user-content-output_29" href="#output_29" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Output</h4>
+<pre><code class="cpp">B -&gt; A -&gt; C -&gt; D -&gt; E -&gt; NULL
+B -&gt; D -&gt; A -&gt; C -&gt; E -&gt; NULL
+</code></pre>
+
+<h4 id="complete-program_29"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/segregate-even-odd-nodes-in-linked-list.cpp">Complete Program</a></h4>
+<h3 id="33-find-and-remove-loop"><a name="user-content-33-find-and-remove-loop" href="#33-find-and-remove-loop" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>33. Find and Remove Loop</h3>
+<pre><code class="cpp">
+int detectAndRemoveLoop(node *head) {
+    node *slow_ptr = head, *fast_ptr = head-&gt;next;
+    while(fast_ptr != NULL &amp;&amp; fast_ptr-&gt;next != NULL) {
+        if(slow_ptr == fast_ptr)
+            break;
+        slow_ptr = slow_ptr-&gt;next;
+        fast_ptr = fast_ptr-&gt;next-&gt;next;
+    }
+
+    if(slow_ptr != fast_ptr) 
+        return 0;
+
+    slow_ptr = head;
+    while(slow_ptr != fast_ptr-&gt;next) {
+        slow_ptr = slow_ptr-&gt;next;
+        fast_ptr = fast_ptr-&gt;next;
+    }
+    fast_ptr-&gt;next = NULL;
+    return 1;
+}
+</code></pre>
+
+<h4 id="example_30"><a name="user-content-example_30" href="#example_30" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Example</h4>
+<pre><code class="cpp">
+node *head = NULL;
+insertAtStart(&amp;head, 'C');
+insertAtStart(&amp;head, 'B');
+insertAtStart(&amp;head, 'A');
+head-&gt;next-&gt;next-&gt;next = head-&gt;next;
+int loop = detectAndRemoveLoop(head);
+if(loop)
+    cout&lt;&lt;&quot;Loop detected and removed&quot;&lt;&lt;endl;
+else
+    cout&lt;&lt;&quot;Loop not detected&quot;&lt;&lt;endl;
+</code></pre>
+
+<h4 id="output_30"><a name="user-content-output_30" href="#output_30" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Output</h4>
+<pre><code class="cpp">Loop detected and removed
+</code></pre>
+
+<h4 id="complete-program_30"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/detect-and-remove-loop.cpp">Complete Program</a></h4>
+<h3 id="34-add-two-linked-lists"><a name="user-content-34-add-two-linked-lists" href="#34-add-two-linked-lists" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>34. Add Two Linked Lists</h3>
+<pre><code class="cpp">
+typedef long long ll;
+
+void putNumberIntoLinkedList(node **ptr, ll no) {
+    while(no) {
+        insertAtEnd(&amp;(*ptr), no%10);
+        no /= 10;
+    }
+}
+
+ll getNumberFromLinkedList(node *ptr) {
+    ll multiplier = 1, no = 0;
+    while(ptr != NULL) {
+        no += ptr-&gt;data * multiplier;
+        multiplier *= 10;
+        ptr = ptr-&gt;next;
+    }
+    return no;
+}
+
+node* addTwoLists(node *x, node *y) {
+    ll x_no = 0, y_no = 0, sum = 0, multiplier = 1;
+
+    x_no = getNumberFromLinkedList(x);
+    y_no = getNumberFromLinkedList(y);
+
+    node *ptr = NULL;
+    putNumberIntoLinkedList(&amp;ptr,x_no + y_no);
+    return ptr;
+}
+</code></pre>
+
+<h4 id="example_31"><a name="user-content-example_31" href="#example_31" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Example</h4>
+<pre><code class="cpp">
+ll m, n;
+cout&lt;&lt;&quot;Enter 1st number: &quot;;
+cin&gt;&gt;m;
+cout&lt;&lt;&quot;Enter 2nd number: &quot;;
+cin&gt;&gt;n;
+node *m_ptr = NULL, *n_ptr = NULL;
+
+putNumberIntoLinkedList(&amp;m_ptr, m);
+putNumberIntoLinkedList(&amp;n_ptr, n);
+
+cout&lt;&lt;&quot;1st number: &quot;;
+printList(m_ptr);
+
+cout&lt;&lt;&quot;2nd number: &quot;;
+printList(n_ptr);
+
+node *sum = addTwoLists(m_ptr, n_ptr);
+cout&lt;&lt;&quot;Sum of Linked Lists: &quot;;
+printList(sum);
+</code></pre>
+
+<h4 id="output_31"><a name="user-content-output_31" href="#output_31" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Output</h4>
+<pre><code class="cpp">Enter 1st number: 64957
+Enter 2nd number: 48
+1st number: 7 -&gt; 5 -&gt; 9 -&gt; 4 -&gt; 6 -&gt; NULL
+2nd number: 8 -&gt; 4 -&gt; NULL
+Sum of Linked Lists: 5 -&gt; 0 -&gt; 0 -&gt; 5 -&gt; 6 -&gt; NULL
+</code></pre>
+
+<h4 id="complete-program_31"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/add-two-numbers-represented-by-linked-list.cpp">Complete Program</a></h4>
+<h3 id="35-union-intersection"><a name="user-content-35-union-intersection" href="#35-union-intersection" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>35. Union &amp; Intersection</h3>
+<pre><code class="cpp">
+node* intersectionofLinkedLists(node *x, node *y) {
+    node *head = NULL;
+    unordered_set&lt;char&gt; seen;
+    while(x != NULL) {
+        seen.insert(x-&gt;data);
+        x = x-&gt;next;
+    }
+
+    while(y != NULL) {
+        if(seen.find(y-&gt;data) != seen.end())
+            insertAtEnd(&amp;head,y-&gt;data);
+        y = y-&gt;next;
+    }
+
+    return head;
+}
+
+node* unionofLinkedLists(node *x, node *y) {
+    node *head = NULL;
+    unordered_set&lt;char&gt; seen;
+
+    while(x != NULL) {
+        seen.insert(x-&gt;data);
+        insertAtEnd(&amp;head,x-&gt;data);
+        x = x-&gt;next;
+    }
+
+    while(y != NULL) {
+        if(seen.find(y-&gt;data) == seen.end())
+            insertAtEnd(&amp;head,y-&gt;data);
+        y = y-&gt;next;
+    }
+
+    return head;
+}
+</code></pre>
+
+<h4 id="example_32"><a name="user-content-example_32" href="#example_32" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Example</h4>
+<pre><code class="cpp">
+node *x = NULL;
+insertAtEnd(&amp;x, 'B');
+insertAtEnd(&amp;x, 'C');
+insertAtEnd(&amp;x, 'A');
+insertAtEnd(&amp;x, 'D');
+insertAtEnd(&amp;x, 'E');
+printList(x);
+
+node *y = NULL;
+insertAtEnd(&amp;y, 'F');
+insertAtEnd(&amp;y, 'C');
+insertAtEnd(&amp;y, 'G');
+insertAtEnd(&amp;y, 'D');
+insertAtEnd(&amp;y, 'H');
+printList(y);
+
+cout&lt;&lt;&quot;Intersection: &quot;&lt;&lt;endl;
+printList(intersectionofLinkedLists(x,y));
+
+cout&lt;&lt;&quot;Union: &quot;&lt;&lt;endl;
+printList(unionofLinkedLists(x,y));
+</code></pre>
+
+<h4 id="output_32"><a name="user-content-output_32" href="#output_32" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Output</h4>
+<pre><code class="cpp">B -&gt; C -&gt; A -&gt; D -&gt; E -&gt; NULL
+F -&gt; C -&gt; G -&gt; D -&gt; H -&gt; NULL
+Intersection: 
+C -&gt; D -&gt; NULL
+Union: 
+B -&gt; C -&gt; A -&gt; D -&gt; E -&gt; F -&gt; G -&gt; H -&gt; NULL
+</code></pre>
+
+<h4 id="complete-program_32"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/union-and-intersection-of-linked-lists.cpp">Complete Program</a></h4>
+<h3 id="36-triplet-from-3-lists-with-sum-equal-to-given-no"><a name="user-content-36-triplet-from-3-lists-with-sum-equal-to-given-no" href="#36-triplet-from-3-lists-with-sum-equal-to-given-no" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>36. Triplet from 3 lists with sum equal to given no.</h3>
+<pre><code class="cpp">
+bool triplet(node *x, node *yTemp, node *zTemp, dataType no) {
+    mergeSort(&amp;yTemp);
+    mergeSort(&amp;zTemp);
+    iterativeReverse(&amp;zTemp);
+
+    while(x != NULL) {
+        node *y = yTemp, *z = zTemp;
+        while(y != NULL &amp;&amp; z != NULL) {
+            dataType sum = x-&gt;data + y-&gt;data + z-&gt;data;
+            if(sum == no) {
+                cout&lt;&lt;&quot;Triplet Found : &quot;&lt;&lt;x-&gt;data&lt;&lt;&quot;, &quot;&lt;&lt;y-&gt;data&lt;&lt;&quot;, &quot;&lt;&lt;z-&gt;data&lt;&lt;endl;
+                return true;
+            }
+            else if(sum &lt; no)
+                        y = y-&gt;next;
+                    else z = z-&gt;next;
+        }
+        x = x-&gt;next;
+    }
+    cout&lt;&lt;&quot;No Triplet Found&quot;&lt;&lt;endl;
+    return false;
+}
+</code></pre>
+
+<h4 id="example_33"><a name="user-content-example_33" href="#example_33" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Example</h4>
+<pre><code class="cpp">
+node *x = NULL;
+insertAtEnd(&amp;x, 14);
+insertAtEnd(&amp;x, 21);
+insertAtEnd(&amp;x, 32);
+insertAtEnd(&amp;x, 61);
+insertAtEnd(&amp;x, 71);
+printList(x);
+
+node *y = NULL;
+insertAtEnd(&amp;y, 11);
+insertAtEnd(&amp;y, 92);
+insertAtEnd(&amp;y, 23);
+insertAtEnd(&amp;y, 86);
+insertAtEnd(&amp;y, 107);
+printList(y);
+
+node *z = NULL;
+insertAtEnd(&amp;z, 321);
+insertAtEnd(&amp;z, 212);
+insertAtEnd(&amp;z, 32);
+insertAtEnd(&amp;z, 65);
+insertAtEnd(&amp;z, 77);
+printList(z);
+
+triplet(x,y,z,296);
+</code></pre>
+
+<h4 id="output_33"><a name="user-content-output_33" href="#output_33" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Output</h4>
+<pre><code class="cpp">14 -&gt; 21 -&gt; 32 -&gt; 61 -&gt; 71 -&gt; NULL
+11 -&gt; 92 -&gt; 23 -&gt; 86 -&gt; 107 -&gt; NULL
+321 -&gt; 212 -&gt; 32 -&gt; 65 -&gt; 77 -&gt; NULL
+Triplet Found : 61, 23, 212
+</code></pre>
+
+<h4 id="complete-program_33"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/find-triplet-from-3-linked-lists-with-sum-equal-to-given-no.cpp">Complete Program</a></h4>
+<h3 id="37-rotate-list-n-times-counter-clockwise"><a name="user-content-37-rotate-list-n-times-counter-clockwise" href="#37-rotate-list-n-times-counter-clockwise" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>37. Rotate List <code>n</code> times Counter Clockwise</h3>
+<pre><code class="cpp">
+void rotate(node **head, int n) {
+    node *temp = *head;
+
+    while(temp-&gt;next != NULL)
+        temp = temp-&gt;next;
+
+    temp-&gt;next = *head;
+
+    temp = *head;
+    while(--n)
+        temp = temp-&gt;next;
+    *head = temp-&gt;next;
+    temp-&gt;next = NULL;
+}
+</code></pre>
+
+<h4 id="example_34"><a name="user-content-example_34" href="#example_34" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Example</h4>
+<pre><code class="cpp">
+node *head = NULL;
+insertAtStart(&amp;head, 'F');
+insertAtStart(&amp;head, 'E');
+insertAtStart(&amp;head, 'D');
+insertAtStart(&amp;head, 'C');
+insertAtStart(&amp;head, 'B');
+insertAtStart(&amp;head, 'A');
+printList(head);
+rotate(&amp;head,4);
+printList(head);
+</code></pre>
+
+<h4 id="output_34"><a name="user-content-output_34" href="#output_34" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Output</h4>
+<pre><code class="cpp">A -&gt; B -&gt; C -&gt; D -&gt; E -&gt; F -&gt; NULL
+E -&gt; F -&gt; A -&gt; B -&gt; C -&gt; D -&gt; NULL
+</code></pre>
+
+<h4 id="complete-program_34"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/rotate-a-linked-list.cpp">Complete Program</a></h4>
+<h3 id="38-sort-lists-of-0s-1s-2s"><a name="user-content-38-sort-lists-of-0s-1s-2s" href="#38-sort-lists-of-0s-1s-2s" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>38. Sort Lists of 0s, 1s &amp; 2s</h3>
+<pre><code class="cpp">
+typedef int dataType;
+
+void sort(node *head) {
+    node *temp = head;
+    int count[3] = {0,0,0};
+
+    while(temp != NULL) {
+        count[temp-&gt;data]++;
+        temp = temp-&gt;next;
+    }
+
+    temp = head;
+    while(temp != NULL) {
+        if(count[0]) {
+            temp-&gt;data = 0;
+            count[0]--;
+        }
+        else 
+            if(count[1]) {
+                temp-&gt;data = 1;
+                count[1]--;
+            }
+            else temp-&gt;data = 2;
+        temp = temp-&gt;next;  
+    }
+}
+</code></pre>
+
+<h4 id="example_35"><a name="user-content-example_35" href="#example_35" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Example</h4>
+<pre><code class="cpp">
+node *head = NULL;
+insertAtEnd(&amp;head, 0);
+insertAtEnd(&amp;head, 1);
+insertAtEnd(&amp;head, 2);
+insertAtEnd(&amp;head, 1);
+insertAtEnd(&amp;head, 0);
+insertAtEnd(&amp;head, 2);
+insertAtEnd(&amp;head, 2);
+insertAtEnd(&amp;head, 2);
+insertAtEnd(&amp;head, 0);
+insertAtEnd(&amp;head, 1);
+insertAtEnd(&amp;head, 2);
+insertAtEnd(&amp;head, 1);
+printList(head);
+sort(head);
+printList(head);
+</code></pre>
+
+<h4 id="output_35"><a name="user-content-output_35" href="#output_35" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Output</h4>
+<pre><code class="cpp">0 -&gt; 1 -&gt; 2 -&gt; 1 -&gt; 0 -&gt; 2 -&gt; 2 -&gt; 2 -&gt; 0 -&gt; 1 -&gt; 2 -&gt; 1 -&gt; NULL
+0 -&gt; 0 -&gt; 0 -&gt; 1 -&gt; 1 -&gt; 1 -&gt; 1 -&gt; 2 -&gt; 2 -&gt; 2 -&gt; 2 -&gt; 2 -&gt; NULL
+</code></pre>
+
+<h4 id="complete-program_35"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/sort-linked-list-of-0s-1s-2s.cpp">Complete Program</a></h4>
+<h3 id="39-skip-m-nodes-delete-n-nodes"><a name="user-content-39-skip-m-nodes-delete-n-nodes" href="#39-skip-m-nodes-delete-n-nodes" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>39. Skip <code>M</code> nodes Delete <code>N</code> nodes</h3>
+<pre><code class="cpp">
+typedef int dataType;
+
+void skipMDeleteN(node *head, int M, int N) {
+    node *temp = head;
+    while(temp != NULL) {
+
+        for(int i = 0; i &lt; M-1; i++)
+            temp = temp-&gt;next;
+
+        node *prev_ptr = temp;
+        temp = temp-&gt;next;
+
+        for(int i = 0; i &lt; N; i++) {
+            node *next_ptr = temp-&gt;next;
+            free(temp);
+            temp = next_ptr;
+        }
+
+        prev_ptr-&gt;next = temp;
+    }
+}
+</code></pre>
+
+<h4 id="example_36"><a name="user-content-example_36" href="#example_36" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Example</h4>
+<pre><code class="cpp">
+node *head = NULL;
+insertAtEnd(&amp;head, 1);
+insertAtEnd(&amp;head, 2);
+insertAtEnd(&amp;head, 3);
+insertAtEnd(&amp;head, 4);
+insertAtEnd(&amp;head, 5);
+insertAtEnd(&amp;head, 6);
+insertAtEnd(&amp;head, 7);
+insertAtEnd(&amp;head, 8);
+insertAtEnd(&amp;head, 9);
+insertAtEnd(&amp;head, 10);
+printList(head);
+skipMDeleteN(head,3,2);
+printList(head);
+</code></pre>
+
+<h4 id="output_36"><a name="user-content-output_36" href="#output_36" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Output</h4>
+<pre><code class="cpp">1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; 5 -&gt; 6 -&gt; 7 -&gt; 8 -&gt; 9 -&gt; 10 -&gt; NULL
+1 -&gt; 2 -&gt; 3 -&gt; 6 -&gt; 7 -&gt; 8 -&gt; NULL
+</code></pre>
+
+<h4 id="complete-program_36"><a href="https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/skip-m-delete-n.cpp">Complete Program</a></h4></article></body></html>

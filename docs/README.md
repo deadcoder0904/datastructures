@@ -880,9 +880,17 @@ A -> B -> E -> F -> G -> NULL
 ```cpp
 void sortedInsert(node **head, dataType data) {
 	if(*head == NULL) return;
-	node *temp = *head;
+	
+	node*temp = *head;
 	node* new_node = (node*) malloc(sizeof(node));
 	new_node->data = data;
+
+	if(temp->data > new_node->data) {
+		new_node->next = temp;
+		*head = new_node;
+		return;
+	}
+
 	while(temp != NULL && temp->next != NULL) {
 		if(temp->next->data > data) {
 			new_node->next = temp->next;
