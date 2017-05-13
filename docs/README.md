@@ -1925,7 +1925,7 @@ ll getNumberFromLinkedList(node *ptr) {
 }
 
 node* addTwoLists(node *x, node *y) {
-	ll x_no = 0, y_no = 0, sum = 0, multiplier = 1;
+	ll x_no = 0, y_no = 0;
 	
 	x_no = getNumberFromLinkedList(x);
 	y_no = getNumberFromLinkedList(y);
