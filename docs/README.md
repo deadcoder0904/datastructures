@@ -2287,3 +2287,67 @@ printList(head);
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/skip-m-delete-n.cpp)
+
+### 40. Merge a linked list into another linked list at alternate positions
+
+```cpp
+
+void mergeAtAlternatePostions(node *a, node **b) {
+	node *p = a, *q = *b;
+
+	while(p != NULL && q != NULL) {
+		node *p_next = p->next;
+		node *q_next = q->next;
+
+		p->next = q;
+		q->next = p_next;
+
+		p = p_next;
+		q = q_next;
+	}
+
+	*b = q;
+}
+```
+
+#### Example
+
+```cpp
+
+node *a = NULL;
+insertAtStart(&a, 'C');
+insertAtStart(&a, 'B');
+insertAtStart(&a, 'A');
+cout<<"Linked List 1 : "<<endl;
+printList(a);
+
+node *b = NULL;
+insertAtStart(&b, 'H');
+insertAtStart(&b, 'G');
+insertAtStart(&b, 'F');
+insertAtStart(&b, 'E');
+insertAtStart(&b, 'D');
+cout<<"Linked List 2 : "<<endl;
+printList(b);
+
+mergeAtAlternatePostions(a,&b);
+cout<<"Modified Linked List 1 : "<<endl;
+printList(a);
+cout<<"Modified Linked List 2 : "<<endl;
+printList(b);
+```
+
+#### Output
+
+```cpp
+Linked List 1 : 
+A -> B -> C -> NULL
+Linked List 2 : 
+D -> E -> F -> G -> H -> NULL
+Modified Linked List 1 : 
+A -> D -> B -> E -> C -> F -> NULL
+Modified Linked List 2 : 
+G -> H -> NULL
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/merge-a-linked-list-into-another-at-alternate-positions.cpp)
