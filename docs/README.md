@@ -2351,3 +2351,57 @@ G -> H -> NULL
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/merge-a-linked-list-into-another-at-alternate-positions.cpp)
+
+### 41. Pairwise swap elements of a given linked list by changing links
+
+```cpp
+
+void pairWiseSwap(node **head) {
+	
+	if(*head == NULL || (*head)->next == NULL)
+		return;
+		
+	node *prev = *head, *curr = prev->next;
+	*head = curr;
+	
+	while(true) {
+		node *next_ptr = curr->next;
+		curr->next = prev;
+
+		if(next_ptr == NULL || next_ptr->next == NULL) {
+			prev->next = next_ptr;
+			break;
+		}
+
+		prev->next = next_ptr->next;
+
+		prev = next_ptr;
+		curr = prev->next;
+	}
+}
+```
+
+#### Example
+
+```cpp
+
+node *head = NULL;
+insertAtStart(&head, 'F');
+insertAtStart(&head, 'E');
+insertAtStart(&head, 'C');
+insertAtStart(&head, 'B');
+insertAtStart(&head, 'A');
+printList(head);
+pairWiseSwap(&head);
+printList(head);
+```
+
+#### Output
+
+```cpp
+A -> B -> C -> E -> F -> NULL
+B -> A -> E -> C -> F -> NULL
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/pairwise-swap-elements-of-linked-list-by-changing-links.cpp)
+
