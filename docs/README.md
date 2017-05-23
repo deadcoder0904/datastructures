@@ -2409,76 +2409,204 @@ B -> A -> E -> C -> F -> NULL
 
 Array is a data structure used to store homogeneous elements at contiguous locations. Size of an array must be provided before storing data.
 
+#### Tip
+
+<p class="tip">~x = x + 1</p>
+
+<p class="warning">~~x = x </p>
+ 
 ### 1. Print
 
 ```cpp
 
 void printArray(int arr[], int len) {
-	cout<<"[";
+	cout<<"The given array is : {";
 	for (int i = 0; i < len; ++i)
 		cout<<" "<<arr[i];
-	cout<<" ]"<<endl<<endl;
+	cout<<" }"<<endl;
 }
 ```
 
-### 2. Search, insert and delete in an unsorted array
+### 2. Search in an Unsorted array
 
-<p class="tip">In C / C++, if array value is not specified it returns Garbage Value</p>
+<p class="danger">In C / C++, if array value is not inserted, then it returns Garbage Value</p>
+
 
 ```cpp
 
-void searchUnsorted(int arr[], int len, int value) {
+int searchUnsorted(int arr[], int len, int value) {
 	for(int i = 0; i < len; i++)
-		if(arr[i] == value) {
-			cout<<"Element found at position "<<(i + 1)<<endl;
-			return;
-		}
-		cout<<"Element not found"<<endl;
-}
-
-void insertUnsorted(int arr[], int len, int n, int value) {
-	if(n >= len) {
-		cout<<"Cannot insert as array is completely filled"<<endl;
-		return;
-	}	
-	arr[n] = value;
-	cout<<"Element "<<value<<" inserted at position "<<n<<" successfully"<<endl;
-}
-
-void deleteUnsorted(int arr[], int len, int value) {
-	int i;
-	for(i = 0; i < len; i++)
 		if(arr[i] == value)
-			break;
-	if(i == len) {
-			cout<<"Element not found"<<endl;
-			return;
-	}
-	cout<<"Element "<<value<<" deleted successfully"<<endl;
-	while(i < len) {
-		arr[i] = arr[i+1];
-		i++;
-	}
+			return i;
+	return -1;
 }
 ```
+
 #### Example
 
 ```cpp
 
 int arr[10] = {278,12,356,420};
 int len = sizeof(arr) / sizeof(arr[0]);
+printArray(arr,4);
+int pos = searchUnsorted(arr, len,52);
+if(!~pos)
+	cout<<"Element 52 not found"<<endl;
+else cout<<"Element 52 found at position "<<(pos + 1)<<endl;
+```
+
+#### Output
+
+```cpp
+The given array is : { 278 12 356 420 }
+Element 52 not found
+
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/array/search-in-an-unsorted-array.cpp)
+
+### 3. Insert in an Unsorted array
+
+```cpp
+
+int insertUnsorted(int arr[], int len, int n, int value) {
+	if(n >= len)
+		return n;
+	arr[n] = value;
+	return n + 1;
+}
+```
+
+#### Example
+
+```cpp
+
+int arr[10] = {278,12,356,420};
+int len = sizeof(arr) / sizeof(arr[0]);
+printArray(arr,4);
+int newLen = insertUnsorted(arr, len,4,977);
+if(newLen == len)
+	cout<<"Cannot insert as array is completely filled"<<endl;
+else 	
+	cout<<"Element 977 inserted at position "<<newLen<<" successfully"<<endl;
+printArray(arr,5);
+```
+
+#### Output
+
+```cpp
+
+The given array is : { 278 12 356 420 }
+Element 977 inserted at position 5 successfully
+The given array is : { 278 12 356 420 977 }
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/array/insert-in-an-unsorted-array.cpp)
+
+### 4. Delete in an Unsorted array
+
+```cpp
+
+int deleteUnsorted(int arr[], int len, int value) {
+	int pos = searchUnsorted(arr,len,value);
+	if(pos == -1)
+		return len;
+	while(pos < len) {
+		arr[pos] = arr[pos+1];
+		pos++;
+	}
+	return len-1;
+}
+```
+
+#### Example
+
+```cpp
+
+int arr[10] = {278,12,356,420};
+int len = sizeof(arr) / sizeof(arr[0]);
+printArray(arr,4);
+int newLen = deleteUnsorted(arr, len,12);
+if(newLen == len)	
+	cout<<"Element 12 not found"<<endl;
+else cout<<"Element 12 deleted successfully"<<endl;
+printArray(arr,3);
+```
+
+#### Output
+
+```cpp
+
+The given array is : { 278 12 356 420 }
+Element 12 deleted successfully
+The given array is : { 278 356 420 }
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/array/delete-in-an-unsorted-array.cpp)
+
+### 5. Search in a Sorted array
+
+<p class="tip">Sorting with Binary Search is faster than sorting iteratively</p>
+
+```cpp
+
+int binarySearch(int arr[], int low, int high, int value) {
+	if(high < low) 
+		return -1;
+	int mid = (low + high) / 2;
+	if(arr[mid] == value)
+		return mid;
+	if(value < arr[mid])
+		return binarySearch(arr,low, mid - 1, value);
+	return binarySearch(arr,mid + 1, high, value);
+}
+```
+
+#### Example
+
+```cpp
+
+int arr[10] = {12,278,356,420};
+int len = sizeof(arr) / sizeof(arr[0]);
+printArray(arr,4);
+int search = binarySearch(arr,0,3,356);	
+if(!~search)
+	cout<<"Element 356 not found"<<endl;
+else cout<<"Element 356 found at positon "<<(search + 1)<<endl;
+```
+
+#### Output
+
+```cpp
+
+The given array is : { 12 278 356 420 }
+Element 356 found at positon 3
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/array/search-in-a-sorted-array.cpp)
+
+### 3. Insert in a Sorted array
+
+```cpp
+
+int insertSorted(int arr[], int len, int value) {
+	int i;
+	for(i = len - 1; i >= 0 && arr[i] > value; i--)
+		arr[i+1] = arr[i];
+	arr[i+1] = value;
+	cout<<"Element "<<value<<" inserted at position "<<(i+2)<<" successfully"<<endl;
+	return len + 1;
+}
+```
+
+#### Example
+
+```cpp
+
+int arr[10] = {12,278,356,420};
+int len = 4;
 printArray(arr,len);
-searchUnsorted(arr, len,52);
-printArray(arr,len);
-searchUnsorted(arr, len,356);
-printArray(arr,len);
-insertUnsorted(arr, len,4,977);
-printArray(arr,len);
-insertUnsorted(arr, len,6,27);
-printArray(arr,len);
-deleteUnsorted(arr, len,12);
-printArray(arr,len);
-deleteUnsorted(arr, len,121);
+len = insertSorted(arr,len,4);
 printArray(arr,len);
 ```
 
@@ -2486,27 +2614,50 @@ printArray(arr,len);
 
 ```cpp
 
-[ 278 12 356 420 0 0 0 0 0 0 ]
-
-Element not found
-[ 278 12 356 420 0 0 0 0 0 0 ]
-
-Element found at position 3
-[ 278 12 356 420 0 0 0 0 0 0 ]
-
-Element 977 inserted at position 4 successfully
-[ 278 12 356 420 977 0 0 0 0 0 ]
-
-Element 27 inserted at position 6 successfully
-[ 278 12 356 420 977 0 27 0 0 0 ]
-
-Element 12 deleted successfully
-[ 278 356 420 977 0 27 0 0 0 1392352256 ]
-
-Element not found
-[ 278 356 420 977 0 27 0 0 0 1392352256 ]
-
+The given array is : { 12 278 356 420 }
+Element 4 inserted at position 1 successfully
+The given array is : { 4 12 278 356 420 }
 ```
 
-#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/array/search-insert-and-delete-in-an-unsorted-array.cpp)
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/array/insert-in-a-sorted-array.cpp)
 
+### 4. Delete in a Sorted array
+
+```cpp
+
+int deleteSorted(int arr[], int len, int value) {
+	int pos = binarySearch(arr,0,len-1,value);
+	if(!~pos)
+		return len;
+	while(pos < len) {
+		arr[pos] = arr[pos+1];
+		pos++;
+	}
+	return len - 1;
+}
+```
+
+#### Example
+
+```cpp
+
+int arr[10] = {12,278,356,420};
+int len = 4;
+printArray(arr,len);
+int newLen = deleteSorted(arr, len,12);
+if(newLen == len)
+	cout<<"Element 12 not found"<<endl;
+else cout<<"Element 12 deleted successfully"<<endl;
+printArray(arr,newLen);
+```
+
+#### Output
+
+```cpp
+
+The given array is : { 12 278 356 420 }
+Element 12 deleted successfully
+The given array is : { 278 356 420 }
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/array/delete-in-a-sorted-array.cpp)
