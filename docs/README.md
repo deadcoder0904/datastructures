@@ -2661,3 +2661,66 @@ The given array is : { 278 356 420 }
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/array/delete-in-a-sorted-array.cpp)
+
+### 5. Check if a pair in array equals a value
+
+#### A. Sorting
+
+```cpp
+
+void hasArrayTwoCandidatesUsingSorting(int arr[],int len, int sum) {
+	int i = 0, j = len - 1;
+	while(i < j)
+		if(arr[i] + arr[j] == sum)
+			break;
+		else 
+			if(arr[i] + arr[j] < sum)
+				i++;
+			else j--;
+	if(i < j)
+		cout<<"Pairs "<<arr[i]<<" and "<<arr[j]<<" equals to "<<sum<<endl;
+	else cout<<"No Candidates Found"<<endl;
+}
+```
+
+#### B. Hash Map
+
+```cpp
+
+void hasArrayTwoCandidatesUsingHashMap(int arr[], int len, int sum) {
+	unordered_set<int> seen;
+	for(int i = 0; i < len; i++)
+		if(seen.find(arr[i]) == seen.end())
+			seen.insert(sum-arr[i]);
+		else {
+			cout<<"Pairs "<<arr[i]<<" and "<<sum-arr[i]<<" equals to "<<sum<<endl;
+			return;
+		}
+	cout<<"No Candidates Found"<<endl;	
+}
+```
+
+#### Example
+
+```cpp
+
+int arr[5] = {4,2,3,1,5};
+printArray(arr,5);
+sort(arr,arr+5);
+hasArrayTwoCandidatesUsingSorting(arr,5,6);
+int arr1[5] = {4,2,3,1,5};
+printArray(arr1,5);
+hasArrayTwoCandidatesUsingHashMap(arr1,5,6);
+```
+
+#### Output
+
+```cpp
+
+The given array is : { 4 2 3 1 5 }
+Pairs 1 and 5 equals to 6
+The given array is : { 4 2 3 1 5 }
+Pairs 2 and 4 equals to 6
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/array/check-if-sum-of-pair-in-array-equals-to-value.cpp)
