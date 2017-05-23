@@ -2405,3 +2405,108 @@ B -> A -> E -> C -> F -> NULL
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/linked-list/pairwise-swap-elements-of-linked-list-by-changing-links.cpp)
 
+## Array
+
+Array is a data structure used to store homogeneous elements at contiguous locations. Size of an array must be provided before storing data.
+
+### 1. Print
+
+```cpp
+
+void printArray(int arr[], int len) {
+	cout<<"[";
+	for (int i = 0; i < len; ++i)
+		cout<<" "<<arr[i];
+	cout<<" ]"<<endl<<endl;
+}
+```
+
+### 2. Search, insert and delete in an unsorted array
+
+<p class="tip">In C / C++, if array value is not specified it returns Garbage Value</p>
+
+```cpp
+
+void searchUnsorted(int arr[], int len, int value) {
+	for(int i = 0; i < len; i++)
+		if(arr[i] == value) {
+			cout<<"Element found at position "<<(i + 1)<<endl;
+			return;
+		}
+		cout<<"Element not found"<<endl;
+}
+
+void insertUnsorted(int arr[], int len, int n, int value) {
+	if(n >= len) {
+		cout<<"Cannot insert as array is completely filled"<<endl;
+		return;
+	}	
+	arr[n] = value;
+	cout<<"Element "<<value<<" inserted at position "<<n<<" successfully"<<endl;
+}
+
+void deleteUnsorted(int arr[], int len, int value) {
+	int i;
+	for(i = 0; i < len; i++)
+		if(arr[i] == value)
+			break;
+	if(i == len) {
+			cout<<"Element not found"<<endl;
+			return;
+	}
+	cout<<"Element "<<value<<" deleted successfully"<<endl;
+	while(i < len) {
+		arr[i] = arr[i+1];
+		i++;
+	}
+}
+```
+#### Example
+
+```cpp
+
+int arr[10] = {278,12,356,420};
+int len = sizeof(arr) / sizeof(arr[0]);
+printArray(arr,len);
+searchUnsorted(arr, len,52);
+printArray(arr,len);
+searchUnsorted(arr, len,356);
+printArray(arr,len);
+insertUnsorted(arr, len,4,977);
+printArray(arr,len);
+insertUnsorted(arr, len,6,27);
+printArray(arr,len);
+deleteUnsorted(arr, len,12);
+printArray(arr,len);
+deleteUnsorted(arr, len,121);
+printArray(arr,len);
+```
+
+#### Output
+
+```cpp
+
+[ 278 12 356 420 0 0 0 0 0 0 ]
+
+Element not found
+[ 278 12 356 420 0 0 0 0 0 0 ]
+
+Element found at position 3
+[ 278 12 356 420 0 0 0 0 0 0 ]
+
+Element 977 inserted at position 4 successfully
+[ 278 12 356 420 977 0 0 0 0 0 ]
+
+Element 27 inserted at position 6 successfully
+[ 278 12 356 420 977 0 27 0 0 0 ]
+
+Element 12 deleted successfully
+[ 278 356 420 977 0 27 0 0 0 1392352256 ]
+
+Element not found
+[ 278 356 420 977 0 27 0 0 0 1392352256 ]
+
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/array/search-insert-and-delete-in-an-unsorted-array.cpp)
+
