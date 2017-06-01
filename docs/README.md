@@ -2495,7 +2495,6 @@ printArray(arr,5);
 #### Output
 
 ```cpp
-
 The given array is : { 278 12 356 420 }
 Element 977 inserted at position 5 successfully
 The given array is : { 278 12 356 420 977 }
@@ -2536,7 +2535,6 @@ printArray(arr,3);
 #### Output
 
 ```cpp
-
 The given array is : { 278 12 356 420 }
 Element 12 deleted successfully
 The given array is : { 278 356 420 }
@@ -2578,7 +2576,6 @@ else cout<<"Element 356 found at positon "<<(search + 1)<<endl;
 #### Output
 
 ```cpp
-
 The given array is : { 12 278 356 420 }
 Element 356 found at positon 3
 ```
@@ -2613,7 +2610,6 @@ printArray(arr,len);
 #### Output
 
 ```cpp
-
 The given array is : { 12 278 356 420 }
 Element 4 inserted at position 1 successfully
 The given array is : { 4 12 278 356 420 }
@@ -2654,7 +2650,6 @@ printArray(arr,newLen);
 #### Output
 
 ```cpp
-
 The given array is : { 12 278 356 420 }
 Element 12 deleted successfully
 The given array is : { 278 356 420 }
@@ -2716,7 +2711,6 @@ hasArrayTwoCandidatesUsingHashMap(arr1,5,6);
 #### Output
 
 ```cpp
-
 The given array is : { 4 2 3 1 5 }
 Pairs 1 and 5 equals to 6
 The given array is : { 4 2 3 1 5 }
@@ -2802,10 +2796,41 @@ printMajorityUsingMoore(arr,9);
 #### Output
 
 ```cpp
-
 The given array is : { 3 3 4 2 4 4 2 4 4 }
 Majority Element Using Map  : 4
 Majority Element Using Moore's Voting Algorithm  : 4
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/array/majority-element.cpp)
+
+### 7. Find Number occuring Odd no. of times
+
+```cpp
+
+int getOccurrences(int arr[], int len) {
+	int num = arr[0];
+	for(int i = 1; i < len; ++i)
+		num ^= arr[i];
+	return num;
+}
+```
+
+#### Example
+
+```cpp
+
+int arr[] = {2, 3, 5, 4, 5, 2, 4, 3, 5, 2, 4, 4, 2};
+int len = sizeof(arr) / sizeof(arr[0]);
+printArray(arr,len);
+cout<<"Number: "<<getOccurrences(arr, len);
+```
+
+#### Output
+
+```cpp
+
+The given array is : { 2 3 5 4 5 2 4 3 5 2 4 4 2 }
+Number: 5
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/array/find-no-occuring-odd-number-of-times.cpp)
