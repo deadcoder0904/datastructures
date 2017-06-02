@@ -3040,3 +3040,51 @@ The given array is : { 2 5 7 8 10 12 14 }
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/array/merge-2-arrays.cpp)
+
+### 12. Reverse an Array
+
+#### A. Iterative
+
+```cpp
+
+void reverseIterative(int arr[], int len) {
+	for(int start = 0, end = len-1; start < end; ++start, --end)
+		swap(&arr[start],&arr[end]);
+}
+```
+
+#### B. Recursive
+
+```cpp
+
+void reverseRecursive(int arr[], int start, int end) {
+	if(start >= end) return;
+
+	swap(&arr[start],&arr[end]);
+	return reverseRecursive(arr,start+1,end-1);
+}
+```
+
+#### Example
+
+```cpp
+
+int arr[] = {5, 6, 7, 8, 9, 10, 1, 2, 3};
+int len = sizeof(arr)/sizeof(arr[0]);
+printArray(arr,len);
+reverseIterative(arr,len);
+printArray(arr,len);
+reverseRecursive(arr,0,len-1);
+printArray(arr,len);
+```
+
+#### Output
+
+```cpp
+
+The given array is : { 5 6 7 8 9 10 1 2 3 }
+The given array is : { 3 2 1 10 9 8 7 6 5 }
+The given array is : { 5 6 7 8 9 10 1 2 3 }
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/array/reverse-an-array.cpp)
