@@ -2839,7 +2839,7 @@ Number: 5
 
 #### A. Kadane's Algorithm
 
-<p class="tip">Does not work for Negative Numbers</p>
+<p class="warning">Does not work for Negative Numbers</p>
 
 ```cpp
 
@@ -2898,3 +2898,54 @@ Largest SubArray Sum using Dynamic Programming: 7
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/array/largest-sum-contiguous-array.cpp)
+
+### 9. Find the Missing Number
+
+#### A. Using Sum
+
+```cpp
+
+int missingNoUsingSum(int arr[], int n) {
+	int sum = 0;
+	int total = n*(n+1)/2;
+	for(int i = 0; i < n; i++)
+		sum += arr[i];
+	return total - sum;
+}
+```
+
+#### B. Dynamic Programming
+
+```cpp
+
+int missingNoUsingXOR(int arr[], int n) {
+	int xor1 = arr[0];
+	for (int i = 1; i < n; ++i)
+		xor1 ^= arr[i];
+	int xor2 = 1;
+	for (int i = 2; i <= n; ++i)
+		xor2 ^= i;
+	return xor1 ^ xor2;
+}
+```
+
+#### Example
+
+```cpp
+
+int arr[] = {1,2,4,5,6};
+printArray(arr,5);
+cout<<"Missing Number Using Sum: "<<missingNoUsingSum(arr,6)<<endl;
+cout<<"Missing Number Using XOR: "<<missingNoUsingXOR(arr,6)<<endl;
+```
+
+#### Output
+
+```cpp
+
+The given array is : { 1 2 4 5 6 }
+Missing Number Using Sum: 3
+Missing Number Using XOR: 3
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/array/find-the-missing-no.cpp)
