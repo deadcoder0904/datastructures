@@ -2992,3 +2992,51 @@ Index: 8
 ```
 
 #### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/array/search-an-element-in-sorted-and-rotated-array.cpp)
+
+### 11. Merge 2 Arrays
+
+```cpp
+
+int *merge(int x[], int y[], int m, int n) {
+	int *arr=new int[m+n], i=0, j=0, k=0;
+	while(i<m && j<n)
+		if(x[i] <= y[j])
+			arr[k++] = x[i++];
+		else arr[k++] = y[j++];
+	while(i<m)
+		arr[k++] = x[i++];
+	while(j<n)
+		arr[k++] = y[j++];
+	return arr;
+}
+```
+
+#### Example
+
+```cpp
+
+int x[] = {2,7,10};
+int y[] = {5,8,12,14};
+int m = sizeof(x)/sizeof(x[0]);
+int n = sizeof(y)/sizeof(y[0]);
+cout<<"Displaying x "<<endl;
+printArray(x,m);
+cout<<"Displaying y "<<endl;
+printArray(y,n);
+cout<<"Displaying Merged Array "<<endl;
+printArray(merge(x,y,m,n),m+n);
+```
+
+#### Output
+
+```cpp
+
+Displaying x 
+The given array is : { 2 7 10 }
+Displaying y 
+The given array is : { 5 8 12 14 }
+Displaying Merged Array 
+The given array is : { 2 5 7 8 10 12 14 }
+```
+
+#### [Complete Program](https://github.com/deadcoder0904/datastructures-practice/blob/master/array/merge-2-arrays.cpp)
